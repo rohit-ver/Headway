@@ -1,0 +1,2138 @@
+/* =========================================================
+   HEADWAY AUTH MODALS
+========================================================= */
+body.auth-modal-open .main-header {
+    display: none !important;
+}
+.hw-auth-modal {
+    border: 0;
+    border-radius: 22px;
+    overflow: hidden;
+
+    background: #FAF7F0;
+
+    box-shadow:
+        0 25px 70px rgba(36, 34, 34, 0.25);
+
+    animation: hwModalIn 0.45s ease both;
+}
+
+/* Hide website header whenever any Bootstrap modal is open */
+
+
+
+/* =========================================================
+   MODAL ANIMATION
+========================================================= */
+
+@keyframes hwModalIn {
+    from {
+        opacity: 0;
+        transform: translateY(25px) scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+
+/* =========================================================
+   MODAL HEADER
+========================================================= */
+
+.hw-auth-modal .modal-header {
+    padding: 28px 32px 10px;
+    border: 0;
+}
+
+.hw-auth-tag {
+    display: inline-block;
+
+    color: #A01414;
+
+    font-size: 11px;
+    font-weight: 800;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 6px;
+}
+
+.hw-modal-title,
+.hw-auth-modal h3 {
+    font-family: "Playfair Display", serif;
+
+    color: #242222;
+
+    font-size: 30px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.hw-modal-description {
+    color: #6b625c;
+
+    font-size: 14px;
+    line-height: 1.7;
+
+    margin-bottom: 25px;
+}
+
+
+/* =========================================================
+   MODAL BODY
+========================================================= */
+
+.hw-auth-modal .modal-body {
+    padding: 20px 32px 32px;
+}
+
+
+/* =========================================================
+   AUTH ICON
+========================================================= */
+
+.hw-auth-icon {
+    width: 65px;
+    height: 65px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 auto 18px;
+
+    border-radius: 50%;
+
+    background: #F4DB69;
+    color: #4A1014;
+
+    font-size: 26px;
+
+    animation: hwIconFloat 3s ease-in-out infinite;
+}
+
+@keyframes hwIconFloat {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-7px);
+    }
+}
+
+.hw-auth-modal .modal-body > h3 {
+    margin-bottom: 10px;
+}
+
+.hw-auth-modal .modal-body > p {
+    color: #6b625c;
+
+    font-size: 14px;
+    line-height: 1.7;
+
+    max-width: 440px;
+    margin: 0 auto 25px;
+}
+
+
+/* =========================================================
+   DOMESTIC / INTERNATIONAL LOCATION SELECTION
+========================================================= */
+
+.hw-location-actions {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 18px;
+
+    margin-top: 25px;
+}
+
+
+/* Location Card */
+
+.hw-location-card {
+    position: relative;
+
+    width: 100%;
+    min-height: 165px;
+
+    padding: 25px 20px;
+
+    border: 1px solid #DED7C9;
+    border-radius: 14px;
+
+    background: #FFFFFF;
+
+    color: #242222;
+
+    text-align: center;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease,
+        background 0.3s ease;
+
+    overflow: hidden;
+}
+
+
+/* Gold top line */
+
+.hw-location-card::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 4px;
+
+    background: #F4DB69;
+
+    transform: scaleX(0);
+
+    transform-origin: center;
+
+    transition: transform 0.3s ease;
+}
+
+
+/* Hover */
+
+.hw-location-card:hover {
+    transform: translateY(-5px);
+
+    border-color: #B28B20;
+
+    box-shadow:
+        0 14px 30px rgba(74, 16, 20, 0.12);
+}
+
+.hw-location-card:hover::before {
+    transform: scaleX(1);
+}
+
+
+/* Active */
+
+.hw-location-card.active {
+    border-color: #A01414;
+
+    background: #FFF9F6;
+
+    box-shadow:
+        0 12px 28px rgba(160, 20, 20, 0.12);
+}
+
+.hw-location-card.active::before {
+    transform: scaleX(1);
+
+    background: #A01414;
+}
+
+
+/* Location Icon */
+
+.hw-location-icon {
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 auto 12px;
+
+    border-radius: 50%;
+
+    background: #F4DB69;
+
+    color: #4A1014;
+
+    font-size: 20px;
+
+    transition: all 0.3s ease;
+}
+
+.hw-location-card:hover .hw-location-icon {
+    transform: scale(1.08);
+}
+
+.hw-location-card.active .hw-location-icon {
+    background: #A01414;
+    color: #FFFFFF;
+}
+
+
+/* Location Title */
+
+.hw-location-card strong {
+    display: block;
+
+    color: #242222;
+
+    font-family: "Playfair Display", serif;
+
+    font-size: 20px;
+
+    margin-bottom: 5px;
+}
+
+
+/* Location Description */
+
+.hw-location-card small {
+    display: block;
+
+    color: #6b625c;
+
+    font-size: 12px;
+
+    line-height: 1.5;
+}
+
+
+/* Arrow */
+
+.hw-location-arrow {
+    position: absolute;
+
+    right: 14px;
+    bottom: 13px;
+
+    color: #A01414;
+
+    font-size: 17px;
+
+    opacity: 0;
+
+    transform: translateX(-5px);
+
+    transition: all 0.3s ease;
+}
+
+.hw-location-card:hover .hw-location-arrow,
+.hw-location-card.active .hw-location-arrow {
+    opacity: 1;
+
+    transform: translateX(0);
+}
+
+
+/* =========================================================
+   AUTH BUTTONS
+========================================================= */
+
+.hw-auth-actions {
+    display: flex;
+
+    gap: 12px;
+}
+
+.hw-primary-btn,
+.hw-secondary-btn {
+    flex: 1;
+
+    min-height: 50px;
+
+    border-radius: 9px;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    transition: all 0.3s ease;
+
+    cursor: pointer;
+}
+
+
+/* Primary */
+
+.hw-primary-btn {
+    border: 1px solid #A01414;
+
+    background: #A01414;
+    color: #FFFFFF;
+}
+
+.hw-primary-btn:hover {
+    background: #7F1010;
+    border-color: #7F1010;
+
+    transform: translateY(-2px);
+}
+
+
+/* Secondary */
+
+.hw-secondary-btn {
+    border: 1px solid #A01414;
+
+    background: transparent;
+    color: #A01414;
+}
+
+.hw-secondary-btn:hover {
+    background: #A01414;
+    color: #FFFFFF;
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   SECURITY NOTE
+========================================================= */
+
+.hw-auth-note {
+    margin-top: 22px;
+
+    color: #8a8178;
+
+    font-size: 12px;
+
+    text-align: center;
+}
+
+.hw-auth-note i {
+    color: #B28B20;
+
+    margin-right: 5px;
+}
+
+
+/* =========================================================
+   FORM
+========================================================= */
+
+.hw-form-group {
+    margin-bottom: 16px;
+}
+
+.hw-form-group label,
+.hw-section-label {
+    display: block;
+
+    color: #242222;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    margin-bottom: 7px;
+}
+
+.hw-form-group label span {
+    color: #A01414;
+}
+
+.hw-form-group label small {
+    color: #999;
+
+    font-weight: 400;
+}
+
+
+/* Input Wrapper */
+
+.hw-input-wrapper {
+    position: relative;
+}
+
+.hw-input-wrapper > i {
+    position: absolute;
+
+    left: 14px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    color: #A01414;
+
+    font-size: 15px;
+
+    z-index: 2;
+}
+
+
+/* Input */
+
+.hw-input-wrapper input,
+.hw-input-wrapper select {
+    width: 100%;
+
+    min-height: 47px;
+
+    border: 1px solid #ded7c9;
+
+    border-radius: 8px;
+
+    background: #FFFFFF;
+
+    color: #242222;
+
+    padding: 10px 14px 10px 40px;
+
+    outline: none;
+
+    transition: all 0.3s ease;
+}
+
+.hw-input-wrapper input:focus,
+.hw-input-wrapper select:focus {
+    border-color: #A01414;
+
+    box-shadow:
+        0 0 0 3px rgba(160, 20, 20, 0.08);
+}
+
+.hw-input-wrapper input::placeholder {
+    color: #aaa;
+}
+
+
+/* =========================================================
+   PASSWORD
+========================================================= */
+
+.password-toggle {
+    position: absolute;
+
+    right: 12px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    border: 0;
+
+    background: transparent;
+
+    color: #777;
+
+    cursor: pointer;
+}
+
+.password-toggle:hover {
+    color: #A01414;
+}
+
+
+/* =========================================================
+   FORGOT PASSWORD
+========================================================= */
+
+.hw-forgot {
+    text-align: right;
+
+    margin-top: -5px;
+    margin-bottom: 18px;
+}
+
+.hw-forgot a {
+    color: #A01414;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    text-decoration: none;
+}
+
+.hw-forgot a:hover {
+    color: #7F1010;
+}
+
+
+/* =========================================================
+   SUBMIT BUTTON
+========================================================= */
+
+.hw-submit-btn {
+    width: 100%;
+
+    min-height: 49px;
+
+    border: 0;
+
+    border-radius: 9px;
+
+    background: #A01414;
+
+    color: #FFFFFF;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    transition: all 0.3s ease;
+
+    cursor: pointer;
+}
+
+.hw-submit-btn:hover {
+    background: #7F1010;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 10px 25px rgba(160, 20, 20, 0.20);
+}
+
+.hw-submit-btn i {
+    margin-left: 7px;
+
+    transition: 0.3s ease;
+}
+
+.hw-submit-btn:hover i {
+    transform: translateX(5px);
+}
+
+
+/* =========================================================
+   CUSTOMER TYPE
+========================================================= */
+
+.hw-type-section {
+    margin-bottom: 22px;
+}
+
+.hw-type-card {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+
+    position: relative;
+
+    min-height: 76px;
+
+    padding: 13px 15px;
+
+    border: 1px solid #e2d8c8;
+
+    border-radius: 12px;
+
+    background: #FFFFFF;
+
+    text-align: left;
+
+    cursor: pointer;
+
+    transition: all 0.3s ease;
+}
+
+.hw-type-card:hover {
+    border-color: #B28B20;
+
+    transform: translateY(-2px);
+}
+
+.hw-type-card.active {
+    border-color: #A01414;
+
+    background: #fff9f6;
+
+    box-shadow:
+        0 8px 20px rgba(160, 20, 20, 0.08);
+}
+
+.hw-type-icon {
+    width: 44px;
+    height: 44px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    margin-right: 12px;
+
+    border-radius: 50%;
+
+    background: #F4DB69;
+
+    color: #4A1014;
+}
+
+.hw-type-card strong {
+    display: block;
+
+    color: #242222;
+
+    font-size: 14px;
+}
+
+.hw-type-card small {
+    display: block;
+
+    color: #777;
+
+    font-size: 11px;
+
+    margin-top: 3px;
+}
+
+.hw-type-check {
+    position: absolute;
+
+    right: 14px;
+
+    color: #A01414;
+
+    opacity: 0;
+
+    transform: scale(0.7);
+
+    transition: all 0.3s ease;
+}
+
+.hw-type-card.active .hw-type-check {
+    opacity: 1;
+
+    transform: scale(1);
+}
+
+
+/* =========================================================
+   SWITCH LOGIN / REGISTER
+========================================================= */
+
+.hw-switch-text {
+    text-align: center;
+
+    margin-top: 20px;
+
+    color: #777;
+
+    font-size: 13px;
+}
+
+.hw-switch-text button {
+    border: 0;
+
+    background: transparent;
+
+    color: #A01414;
+
+    font-weight: 700;
+
+    padding: 0;
+
+    cursor: pointer;
+}
+
+.hw-switch-text button:hover {
+    color: #7F1010;
+}
+
+
+/* =========================================================
+   CLOSE BUTTON
+========================================================= */
+
+.hw-auth-modal .btn-close {
+    opacity: 0.65;
+
+    transition: all 0.3s ease;
+}
+
+.hw-auth-modal .btn-close:hover {
+    opacity: 1;
+
+    transform: rotate(90deg);
+}
+
+
+/* =========================================================
+   MODAL BACKDROP
+========================================================= */
+
+.modal-backdrop.show {
+    opacity: 0.62;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 767.98px) {
+
+    .hw-auth-modal {
+        margin: 10px;
+
+        border-radius: 17px;
+    }
+
+    .hw-auth-modal .modal-header {
+        padding: 22px 20px 8px;
+    }
+
+    .hw-auth-modal .modal-body {
+        padding: 15px 20px 25px;
+    }
+
+    .hw-modal-title,
+    .hw-auth-modal h3 {
+        font-size: 25px;
+    }
+
+    /* Auth buttons */
+
+    .hw-auth-actions {
+        flex-direction: column;
+    }
+
+
+    /* Domestic / International */
+
+    .hw-location-actions {
+        grid-template-columns: 1fr;
+
+        gap: 12px;
+
+        margin-top: 20px;
+    }
+
+    .hw-location-card {
+        min-height: 135px;
+
+        padding: 20px 18px;
+    }
+
+    .hw-location-icon {
+        width: 43px;
+        height: 43px;
+
+        font-size: 18px;
+
+        margin-bottom: 9px;
+    }
+
+    .hw-location-card strong {
+        font-size: 18px;
+    }
+
+    .hw-location-card small {
+        font-size: 11px;
+    }
+
+
+    /* Customer type */
+
+    .hw-type-card {
+        min-height: 70px;
+    }
+
+
+    /* Form */
+
+    .hw-input-wrapper input,
+    .hw-input-wrapper select {
+        min-height: 45px;
+    }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+
+    .hw-auth-modal {
+        margin: 5px;
+    }
+
+    .hw-auth-modal .modal-header {
+        padding: 20px 16px 5px;
+    }
+
+    .hw-auth-modal .modal-body {
+        padding: 12px 16px 22px;
+    }
+
+    .hw-modal-title,
+    .hw-auth-modal h3 {
+        font-size: 23px;
+    }
+
+    .hw-location-card {
+        min-height: 125px;
+
+        padding: 17px 15px;
+    }
+
+    .hw-location-card strong {
+        font-size: 17px;
+    }
+
+    .hw-location-arrow {
+        right: 11px;
+        bottom: 10px;
+    }
+}
+
+/* =========================================================
+   DOMESTIC / INTERNATIONAL CUSTOMER TYPE
+========================================================= */
+
+.customer-type-card {
+    width: 100%;
+    min-height: 165px;
+
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    gap: 18px;
+
+    padding: 25px 22px;
+
+    border: 1px solid #DED7C9;
+    border-radius: 14px;
+
+    background: #FFFFFF;
+    color: #242222;
+
+    text-align: left;
+
+    cursor: pointer;
+
+    overflow: hidden;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease,
+        background 0.3s ease;
+}
+
+
+/* Gold top line */
+
+.customer-type-card::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 4px;
+
+    background: #F4DB69;
+
+    transform: scaleX(0);
+
+    transform-origin: center;
+
+    transition: transform 0.3s ease;
+}
+
+
+/* Hover */
+
+.customer-type-card:hover {
+    transform: translateY(-5px);
+
+    border-color: #B28B20;
+
+    background: #FFFDF8;
+
+    box-shadow:
+        0 14px 30px rgba(74, 16, 20, 0.12);
+}
+
+.customer-type-card:hover::before {
+    transform: scaleX(1);
+}
+
+
+/* Icon */
+
+.customer-type-icon {
+    width: 55px;
+    height: 55px;
+
+    min-width: 55px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #F4DB69;
+
+    color: #4A1014;
+
+    font-size: 25px;
+
+    transition: all 0.3s ease;
+}
+
+.customer-type-card:hover .customer-type-icon {
+    transform: scale(1.08) rotate(-3deg);
+}
+
+
+/* Heading */
+
+.customer-type-card h5 {
+    margin: 0 0 6px;
+
+    color: #242222;
+
+    font-family: "Playfair Display", serif;
+
+    font-size: 21px;
+    font-weight: 700;
+}
+
+
+/* Description */
+
+.customer-type-card p {
+    margin: 0;
+
+    color: #6b625c;
+
+    font-size: 13px;
+
+    line-height: 1.5;
+}
+
+
+/* Arrow */
+
+.customer-type-card > .bi-arrow-right {
+    position: absolute;
+
+    right: 18px;
+    bottom: 16px;
+
+    color: #A01414;
+
+    font-size: 19px;
+
+    opacity: 0;
+
+    transform: translateX(-6px);
+
+    transition: all 0.3s ease;
+}
+
+.customer-type-card:hover > .bi-arrow-right {
+    opacity: 1;
+
+    transform: translateX(0);
+}
+
+
+/* Active / Selected */
+
+.customer-type-card.active {
+    border-color: #A01414;
+
+    background: #FFF9F6;
+
+    box-shadow:
+        0 12px 28px rgba(160, 20, 20, 0.12);
+}
+
+.customer-type-card.active::before {
+    transform: scaleX(1);
+
+    background: #A01414;
+}
+
+.customer-type-card.active .customer-type-icon {
+    background: #A01414;
+
+    color: #FFFFFF;
+}
+
+.customer-type-card.active > .bi-arrow-right {
+    opacity: 1;
+
+    transform: translateX(0);
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 767.98px) {
+
+    .customer-type-card {
+        min-height: 130px;
+
+        padding: 20px 18px;
+
+        gap: 14px;
+    }
+
+    .customer-type-icon {
+        width: 48px;
+        height: 48px;
+
+        min-width: 48px;
+
+        font-size: 21px;
+    }
+
+    .customer-type-card h5 {
+        font-size: 18px;
+    }
+
+    .customer-type-card p {
+        font-size: 12px;
+
+        padding-right: 20px;
+    }
+
+    .customer-type-card > .bi-arrow-right {
+        right: 14px;
+        bottom: 12px;
+    }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+
+    .customer-type-card {
+        min-height: 115px;
+
+        padding: 17px 15px;
+    }
+
+    .customer-type-icon {
+        width: 43px;
+        height: 43px;
+
+        min-width: 43px;
+
+        font-size: 19px;
+    }
+
+    .customer-type-card h5 {
+        font-size: 17px;
+    }
+
+    .customer-type-card p {
+        font-size: 11px;
+    }
+}
+
+/* =========================================================
+   REGISTRATION FORM STEP
+========================================================= */
+
+#registrationFormStep {
+    animation: hwFormSlideIn 0.45s ease both;
+
+    /* Header ke neeche spacing */
+    padding-top: 18px;
+    row-gap: 8px !important;
+}
+
+@keyframes hwFormSlideIn {
+    from {
+        opacity: 0;
+        transform: translateX(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+/* =========================================================
+   HEADWAYSTRATA - REGISTRATION FORM
+   ========================================================= */
+
+/* Form Step */
+#registrationFormStep {
+    animation: hwFormSlideIn 0.45s ease both;
+}
+
+@keyframes hwFormSlideIn {
+    from {
+        opacity: 0;
+        transform: translateX(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+
+/* =========================================================
+   BACK BUTTON
+   ========================================================= */
+
+.hw-back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+
+    border: 0;
+    background: transparent;
+
+    color: #A01414;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    padding: 5px 0;
+    margin-bottom: 18px;
+
+    cursor: pointer;
+
+    transition: all 0.3s ease;
+}
+
+.hw-back-btn:hover {
+    color: #7F1010;
+    transform: translateX(-4px);
+}
+
+.hw-back-btn i {
+    font-size: 16px;
+}
+
+
+/* =========================================================
+   FORM HEADING
+   ========================================================= */
+
+.hw-form-heading {
+    margin-bottom: 28px;
+}
+
+.hw-form-heading .hw-modal-tag {
+    display: inline-block;
+
+    color: #A01414;
+
+    font-size: 11px;
+    font-weight: 800;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 6px;
+}
+
+.hw-form-heading h3 {
+    font-family: "Playfair Display", serif;
+
+    color: #242222;
+
+    font-size: 34px;
+    font-weight: 700;
+
+    line-height: 1.15;
+
+    margin: 0 0 8px;
+}
+
+.hw-form-heading p {
+    color: #6b625c;
+
+    font-size: 14px;
+    line-height: 1.6;
+
+    margin: 0;
+}
+
+
+/* =========================================================
+   FORM ROW
+   ========================================================= */
+
+#registrationFormStep .row {
+    row-gap: 8px !important;
+}
+
+
+/* =========================================================
+   FORM LABEL
+   ========================================================= */
+
+.hw-form-label {
+    display: block;
+
+    color: #242222;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    margin-bottom: 7px;
+}
+
+.hw-form-label span {
+    color: #A01414;
+    margin-left: 2px;
+}
+
+
+/* =========================================================
+   INPUTS
+   ========================================================= */
+
+.hw-input {
+    width: 100%;
+
+    min-height: 48px;
+
+    padding: 11px 14px !important;
+
+    border: 1px solid #ded7c9 !important;
+
+    border-radius: 9px !important;
+
+    background: #fff !important;
+
+    color: #242222 !important;
+
+    font-size: 14px;
+
+    outline: none;
+
+    box-shadow: none !important;
+
+    transition:
+        border-color 0.3s ease,
+        box-shadow 0.3s ease,
+        transform 0.3s ease;
+}
+
+
+/* Placeholder */
+
+.hw-input::placeholder {
+    color: #aaa;
+
+    font-size: 14px;
+}
+
+
+/* Focus */
+
+.hw-input:focus {
+    border-color: #A01414 !important;
+
+    background: #fff !important;
+
+    box-shadow:
+        0 0 0 3px rgba(160, 20, 20, 0.08) !important;
+
+    transform: translateY(-1px);
+}
+
+
+/* Select */
+
+select.hw-input {
+    cursor: pointer;
+
+    color: #242222 !important;
+}
+
+
+/* =========================================================
+   COUNTRY FIELD
+   ========================================================= */
+
+#countryField {
+    animation: countryFieldIn 0.35s ease both;
+}
+
+@keyframes countryFieldIn {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =========================================================
+   CREATE ACCOUNT BUTTON
+   ========================================================= */
+
+.hw-register-btn {
+    width: 100%;
+
+    min-height: 50px;
+
+    margin-top: 26px;
+
+    border: 0;
+    border-radius: 9px;
+
+    background: #A01414;
+
+    color: #fff;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    cursor: pointer;
+
+    transition: all 0.35s ease;
+}
+
+.hw-register-btn:hover {
+    background: #7F1010;
+
+    color: #fff;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 10px 25px rgba(160, 20, 20, 0.20);
+}
+
+.hw-register-btn i {
+    transition: transform 0.3s ease;
+}
+
+.hw-register-btn:hover i {
+    transform: translateX(5px);
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 767.98px) {
+
+    #registrationFormStep {
+        padding: 0;
+    }
+
+    .hw-form-heading {
+        margin-bottom: 22px;
+    }
+
+    .hw-form-heading h3 {
+        font-size: 27px;
+    }
+
+    .hw-form-heading p {
+        font-size: 13px;
+    }
+
+    .hw-form-label {
+        font-size: 12px;
+    }
+
+    .hw-input {
+        min-height: 46px;
+
+        font-size: 14px;
+    }
+
+    .hw-input::placeholder {
+        font-size: 13px;
+    }
+
+    #registrationFormStep .row {
+        row-gap: 15px;
+    }
+
+    .hw-register-btn {
+        min-height: 48px;
+
+        margin-top: 22px;
+    }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+    .hw-form-heading h3 {
+        font-size: 25px;
+    }
+
+    .hw-form-heading p {
+        font-size: 12px;
+    }
+
+    .hw-back-btn {
+        font-size: 13px;
+    }
+
+    .hw-input {
+        min-height: 44px;
+    }
+
+    .hw-register-btn {
+        font-size: 13px;
+    }
+}
+
+/* =========================================================
+   HEADWAY AUTH MODALS - COMPACT SIZE OVERRIDES
+   NOTE: All original CSS above is preserved.
+   These rules only reduce the modal dimensions/spacing.
+========================================================= */
+
+.hw-auth-modal {
+    border-radius: 16px;
+    max-height: 92vh;
+}
+
+.hw-auth-modal .modal-header {
+    padding: 18px 22px 6px;
+}
+
+.hw-auth-modal .modal-body {
+    padding: 8px 22px 20px;
+    max-height: calc(92vh - 70px);
+    overflow-y: auto;
+}
+
+.hw-auth-tag,
+.hw-form-heading .hw-modal-tag {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    margin-bottom: 4px;
+}
+
+.hw-modal-title,
+.hw-auth-modal h3 {
+    font-size: 26px;
+    line-height: 1.15;
+}
+
+.hw-modal-description {
+    font-size: 13px;
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+.hw-auth-modal .modal-body > p {
+    font-size: 13px;
+    line-height: 1.55;
+    margin-bottom: 16px;
+}
+
+.hw-auth-icon {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 12px;
+    font-size: 20px;
+}
+
+/* Domestic / International cards */
+.hw-location-actions {
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.hw-location-card {
+    min-height: 120px;
+    padding: 16px 14px;
+    border-radius: 11px;
+}
+
+.hw-location-card::before {
+    height: 3px;
+}
+
+.hw-location-icon {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 8px;
+    font-size: 17px;
+}
+
+.hw-location-card strong {
+    font-size: 17px;
+    margin-bottom: 3px;
+}
+
+.hw-location-card small {
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+.hw-location-arrow {
+    right: 10px;
+    bottom: 9px;
+    font-size: 14px;
+}
+
+/* Auth buttons */
+.hw-auth-actions {
+    gap: 8px;
+}
+
+.hw-primary-btn,
+.hw-secondary-btn {
+    min-height: 44px;
+    border-radius: 8px;
+    font-size: 13px;
+}
+
+.hw-auth-note {
+    margin-top: 14px;
+    font-size: 12px;
+}
+
+/* Login / common form */
+.hw-form-group {
+    margin-bottom: 10px;
+}
+
+.hw-form-group label,
+.hw-section-label {
+    font-size: 13px;
+    margin-bottom: 4px;
+}
+
+.hw-input-wrapper > i {
+    left: 12px;
+    font-size: 14px;
+}
+
+.hw-input-wrapper input,
+.hw-input-wrapper select {
+    min-height: 42px;
+    padding: 7px 12px 7px 34px;
+    border-radius: 7px;
+    font-size: 14px;
+}
+
+.hw-input-wrapper input::placeholder {
+    font-size: 13px;
+}
+
+.password-toggle {
+    right: 9px;
+}
+
+.hw-forgot {
+    margin-top: -2px;
+    margin-bottom: 12px;
+}
+
+.hw-forgot a {
+    font-size: 12px;
+}
+
+.hw-submit-btn {
+    min-height: 44px;
+    border-radius: 8px;
+    font-size: 13px;
+}
+
+.hw-submit-btn i {
+    margin-left: 5px;
+}
+
+.hw-switch-text {
+    margin-top: 12px;
+    font-size: 13px;
+}
+
+/* Customer type cards */
+.hw-type-section {
+    margin-bottom: 14px;
+}
+
+.hw-type-card {
+    min-height: 60px;
+    padding: 9px 11px;
+    border-radius: 9px;
+}
+
+.hw-type-icon {
+    width: 36px;
+    height: 36px;
+    margin-right: 9px;
+    font-size: 16px;
+}
+
+.hw-type-card strong {
+    font-size: 14px;
+}
+
+.hw-type-card small {
+    font-size: 11px;
+    margin-top: 2px;
+}
+
+.hw-type-check {
+    right: 10px;
+}
+
+/* Large customer type cards */
+.customer-type-card {
+    min-height: 120px;
+    gap: 12px;
+    padding: 15px 14px;
+    border-radius: 11px;
+}
+
+.customer-type-icon {
+    width: 43px;
+    height: 43px;
+    min-width: 43px;
+    font-size: 19px;
+}
+
+.customer-type-card h5 {
+    font-size: 18px;
+    margin-bottom: 4px;
+}
+
+.customer-type-card p {
+    font-size: 13px;
+    line-height: 1.45;
+}
+
+.customer-type-card > .bi-arrow-right {
+    right: 12px;
+    bottom: 10px;
+    font-size: 15px;
+}
+
+/* Registration form */
+#registrationFormStep {
+    padding-top: 5px;
+}
+
+.hw-back-btn {
+    font-size: 13px;
+    gap: 5px;
+    margin-bottom: 10px;
+    padding: 3px 0;
+}
+
+.hw-back-btn i {
+    font-size: 14px;
+}
+
+.hw-form-heading {
+    margin-bottom: 16px;
+}
+
+.hw-form-heading .hw-modal-tag {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+}
+
+.hw-form-heading h3 {
+    font-size: 26px;
+    line-height: 1.15;
+    margin-bottom: 5px;
+}
+
+.hw-form-heading p {
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+#registrationFormStep .row {
+    row-gap: 10px;
+}
+
+.hw-form-label {
+    font-size: 13px;
+    margin-bottom: 4px;
+}
+
+.hw-input {
+    min-height: 42px;
+    padding: 8px 11px !important;
+    border-radius: 7px !important;
+    font-size: 14px;
+}
+
+.hw-input::placeholder {
+    font-size: 13px;
+}
+
+.hw-register-btn {
+    min-height: 44px;
+    margin-top: 15px;
+    border-radius: 8px;
+    font-size: 14px;
+    gap: 6px;
+}
+
+/* Desktop modal width */
+@media (min-width: 768px) {
+    #loginModal .modal-dialog,
+    #registerModal .modal-dialog {
+        max-width: 500px;
+    }
+}
+
+/* Tablet / mobile */
+@media (max-width: 767.98px) {
+
+    .hw-auth-modal {
+        margin: 7px;
+        border-radius: 14px;
+        max-height: 94vh;
+    }
+
+    .hw-auth-modal .modal-header {
+        padding: 15px 16px 5px;
+    }
+
+    .hw-auth-modal .modal-body {
+        padding: 6px 16px 15px;
+        max-height: calc(94vh - 65px);
+    }
+
+    .hw-modal-title,
+    .hw-auth-modal h3 {
+        font-size: 21px;
+    }
+
+    .hw-modal-description {
+        font-size: 11px;
+        margin-bottom: 12px;
+    }
+
+    .hw-location-actions {
+        grid-template-columns: 1fr;
+        gap: 8px;
+        margin-top: 12px;
+    }
+
+    .hw-location-card {
+        min-height: 95px;
+        padding: 12px;
+    }
+
+    .hw-location-icon {
+        width: 35px;
+        height: 35px;
+        font-size: 15px;
+        margin-bottom: 5px;
+    }
+
+    .hw-location-card strong {
+        font-size: 14px;
+    }
+
+    .hw-location-card small {
+        font-size: 9px;
+    }
+
+    .hw-auth-actions {
+        gap: 7px;
+    }
+
+    .hw-primary-btn,
+    .hw-secondary-btn {
+        min-height: 40px;
+        font-size: 11px;
+    }
+
+    .hw-form-heading h3 {
+        font-size: 22px;
+    }
+
+    .hw-form-heading p {
+        font-size: 10px;
+    }
+
+    .hw-input {
+        min-height: 39px;
+        font-size: 11px;
+    }
+
+    .hw-register-btn {
+        min-height: 40px;
+        margin-top: 12px;
+        font-size: 11px;
+    }
+}
+
+/* Very small mobile */
+@media (max-width: 480px) {
+
+    .hw-auth-modal {
+        margin: 4px;
+        border-radius: 12px;
+    }
+
+    .hw-auth-modal .modal-header {
+        padding: 13px 14px 4px;
+    }
+
+    .hw-auth-modal .modal-body {
+        padding: 5px 14px 12px;
+    }
+
+    .hw-modal-title,
+    .hw-auth-modal h3 {
+        font-size: 20px;
+    }
+
+    .hw-modal-description {
+        font-size: 10px;
+    }
+
+    .hw-form-heading {
+        margin-bottom: 12px;
+    }
+
+    .hw-form-heading h3 {
+        font-size: 21px;
+    }
+
+    .hw-form-label {
+        font-size: 10px;
+    }
+
+    .hw-input {
+        min-height: 37px;
+        padding: 7px 9px !important;
+        font-size: 11px;
+    }
+
+    .hw-input::placeholder {
+        font-size: 10px;
+    }
+
+    .hw-register-btn,
+    .hw-submit-btn {
+        min-height: 39px;
+        font-size: 11px;
+    }
+
+    .hw-switch-text {
+        font-size: 10px;
+        margin-top: 9px;
+    }
+}
+
+/* =========================================================
+   FINAL FIX PATCH
+   1) Close (X) button hamesha visible/top-right pe fixed —
+      header ke content ke peeche chupega nahi.
+   2) Registration modal thodi aur choti — sirf size,
+      colors/design bilkul waise hi rakhe hain.
+   NOTE: Yeh patch sabse last me load hona chahiye taaki
+   override ho jaye.
+========================================================= */
+
+/* --- Close button: header ke top-right me pin, kabhi hide nahi hoga --- */
+.hw-auth-modal .modal-header {
+    position: relative;
+    padding-right: 44px; /* title/tag button se takraye na isliye space */
+}
+
+.hw-auth-modal .btn-close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+
+    width: 26px;
+    height: 26px;
+
+    margin: 0;
+    padding: 0;
+
+    background-size: 12px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    z-index: 20; /* sabse upar, kabhi kisi content ke peeche nahi jayega */
+
+    opacity: 0.65;
+}
+
+.hw-auth-modal .btn-close:hover {
+    opacity: 1;
+    transform: rotate(90deg);
+}
+
+/* --- Registration form ke andar bhi header hota hai to wahi rule apply --- */
+#registerModal .modal-header,
+#registrationFormStep .modal-header {
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    text-align: center;
+
+    padding: 28px 44px 18px 32px;
+
+    border-bottom: 1px solid rgba(160, 20, 20, 0.12);
+}
+
+#registrationModal .hw-modal-tag {
+    display: block;
+
+    color: #A01414;
+
+    font-size: 18px;
+    font-weight: 800;
+    text-align: center;
+
+    letter-spacing: 2.5px;
+
+    margin-bottom: 6px;
+}
+#registrationModal .modal-title {
+    font-family: "Playfair Display", serif;
+
+    color: #520d0d;
+
+    font-size: 30px;
+    font-weight: 700;
+
+    margin: 0;
+}
+
+
+/* --- Overall modal aur zyada compact (sirf size) --- */
+@media (min-width: 768px) {
+    #loginModal .modal-dialog,
+    #registerModal .modal-dialog {
+        max-width: 360px; /* pehle 400px tha */
+    }
+}
+
+.hw-auth-modal {
+    max-height: 88vh; /* pehle 92vh tha */
+}
+
+.hw-auth-modal .modal-body {
+    max-height: calc(88vh - 62px);
+}
+
+/* Registration form ke andar spacing thodi aur ghatai */
+.hw-form-heading {
+    margin-bottom: 12px;
+}
+
+.hw-form-heading h3 {
+    font-size: 24px;
+    margin-bottom: 4px;
+}
+
+.hw-form-heading p {
+    font-size: 13px;
+    line-height: 1.45;
+}
+
+#registrationFormStep .row {
+    row-gap: 8px;
+}
+
+.hw-form-label {
+    font-size: 13px;
+}
+
+.hw-input {
+    min-height: 40px;
+    padding: 7px 10px !important;
+    font-size: 14px;
+}
+
+.hw-input::placeholder {
+    font-size: 13px;
+}
+
+.hw-register-btn {
+    min-height: 42px;
+    margin-top: 12px;
+    font-size: 14px;
+}
+
+.hw-back-btn {
+    margin-bottom: 8px;
+    font-size: 13px;
+}
+
+/* Customer type cards thodi aur choti (registration step me isi ki wajah se height jyada ho rahi thi) */
+.customer-type-card {
+    min-height: 95px;
+    padding: 12px 12px;
+    gap: 10px;
+}
+
+.customer-type-icon {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    font-size: 16px;
+}
+
+.customer-type-card h5 {
+    font-size: 16px;
+    margin-bottom: 2px;
+}
+
+.customer-type-card p {
+    font-size: 12px;
+    line-height: 1.35;
+}
+
+@media (max-width: 767.98px) {
+    #loginModal .modal-dialog,
+    #registerModal .modal-dialog {
+        max-width: 100%;
+    }
+
+    .hw-auth-modal .btn-close {
+        top: 11px;
+        right: 11px;
+        width: 24px;
+        height: 24px;
+        background-size: 11px;
+    }
+
+    .hw-auth-modal .modal-header,
+    #registerModal .modal-header,
+    #registrationFormStep .modal-header {
+        padding-right: 38px;
+    }
+}
