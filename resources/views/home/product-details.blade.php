@@ -50,7 +50,7 @@
 
                         <img
                             id="mainProductImage"
-                            src="{{ asset('images/makhana-5-suta.jpg') }}"
+                            src="{{ asset('uploads/products/makhana-5-suta.jpg') }}"
                             alt="Premium Roasted Makhana"
                         >
 
@@ -68,11 +68,11 @@
                         <button
                             type="button"
                             class="product-thumb active"
-                            onclick="changeProductImage(this, '{{ asset('images/makhana-5-suta.jpg') }}')"
+                            onclick="changeProductImage(this, '{{ asset('uploads/products/makhana-5-suta.jpg') }}')"
                         >
 
                             <img
-                                src="{{ asset('images/makhana-5-suta.jpg') }}"
+                                src="{{ asset('uploads/products/makhana-5-suta.jpg') }}"
                                 alt="Makhana"
                             >
 
@@ -82,11 +82,11 @@
                         <button
                             type="button"
                             class="product-thumb"
-                            onclick="changeProductImage(this, '{{ asset('images/makhana-4-suta.jpg') }}')"
+                            onclick="changeProductImage(this, '{{ asset('uploads/products/makhana-4-suta.jpg') }}')"
                         >
 
                             <img
-                                src="{{ asset('images/makhana-4-suta.jpg') }}"
+                                src="{{ asset('uploads/products/makhana-4-suta.jpg') }}"
                                 alt="Makhana"
                             >
 
@@ -96,11 +96,11 @@
                         <button
                             type="button"
                             class="product-thumb"
-                            onclick="changeProductImage(this, '{{ asset('images/makhana-6-suta.jpg') }}')"
+                            onclick="changeProductImage(this, '{{ asset('uploads/products/makhana-6-suta.jpg') }}')"
                         >
 
                             <img
-                                src="{{ asset('images/makhana-6-suta.jpg') }}"
+                                src="{{ asset('uploads/products/makhana-6-suta.jpg') }}"
                                 alt="Makhana"
                             >
 
@@ -110,11 +110,11 @@
                         <button
                             type="button"
                             class="product-thumb"
-                            onclick="changeProductImage(this, '{{ asset('images/makhana.jpg') }}')"
+                            onclick="changeProductImage(this, '{{ asset('uploads/products/makhana.jpg') }}')"
                         >
 
                             <img
-                                src="{{ asset('images/makhana.jpg') }}"
+                                src="{{ asset('uploads/products/makhana.jpg') }}"
                                 alt="Makhana Product"
                             >
 

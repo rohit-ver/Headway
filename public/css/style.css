@@ -2053,6 +2053,11 @@ img {
     background: #fff;
 }
 
+/* Keep the products area closer to the home-page hero banner. */
+.hero-section + .products-section {
+    padding-top: 28px;
+}
+
 .section-heading {
     max-width: 760px;
     margin: 0 auto 50px;
@@ -2621,6 +2626,10 @@ img {
         padding: 65px 0;
     }
 
+    .hero-section + .products-section {
+        padding-top: 24px;
+    }
+
     .product-section-heading {
         align-items: start;
         flex-direction: column;
@@ -2655,6 +2664,10 @@ img {
     .products-section,
     .product-list-section {
         padding: 55px 0;
+    }
+
+    .hero-section + .products-section {
+        padding-top: 20px;
     }
 
     .section-heading {
