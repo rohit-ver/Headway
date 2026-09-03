@@ -52,17 +52,16 @@
                             and sizes.
                         </p>
 
-                        <a href="{{ Auth::check() ? route('home.products') : '#' }}"
+                        <a href="{{ Auth::guard('customer')->check() ? route('products') : '#' }}"
                             class="hero-btn explore-products-btn"
-                            @guest
+                            @guest('customer')
                                 data-bs-toggle="modal"
-                                data-bs-target="#customerRegistrationModal"
+                                data-bs-target="#authChoiceModal"
                             @endguest>
-                                
+
                                 Explore Products
                                 <i class="bi bi-arrow-right"></i>
-                        </a>
-
+                            </a>
                     </div>
 
                 </div>
@@ -251,9 +250,14 @@
                             for retail and bulk requirements.
                         </p>
 
-                        <a href="{{route('product.details')}}" class="product-btn">
-                            View Details
-                            <i class="bi bi-arrow-right"></i>
+                        <a href="{{ Auth::guard('customer')->check() ? route('product.details') : '#' }}"
+                            class="product-btn"
+                            @guest('customer')
+                                data-bs-toggle="modal"
+                                data-bs-target="#authChoiceModal"
+                            @endguest>
+                                View Details
+                                <i class="bi bi-arrow-right"></i>
                         </a>
 
                     </div>
@@ -526,7 +530,7 @@
 
             </div>
 
-            <a href="{{ url('/contact') }}" class="cta-btn">
+            <a href="{{ url('/buyer-inquiry') }}" class="cta-btn">
                 Send Inquiry
                 <i class="bi bi-arrow-right"></i>
             </a>

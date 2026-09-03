@@ -1,5 +1,6 @@
 <div class="modal fade" id="registrationModal" tabindex="-1"
      aria-labelledby="registrationModalLabel" aria-hidden="true">
+     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <div class="modal-dialog modal-dialog-centered modal-lg">
 
@@ -143,7 +144,7 @@
                     </div>
 
 
-                    <form action="#" method="POST">
+                    <form action="{{ route('register.store')}}" method="POST" id="registrationForm">
 
                         @csrf
 
@@ -179,14 +180,14 @@
                             <div class="col-md-6">
 
                                 <label class="hw-form-label">
-                                    Business Email
+                                     Email
                                     <span>*</span>
                                 </label>
 
                                 <input type="email"
                                        name="email"
                                        class="form-control hw-input"
-                                       placeholder="Enter business email"
+                                       placeholder="Enter your email"
                                        required>
 
                             </div>
@@ -212,6 +213,7 @@
 
                             {{-- Phone --}}
 
+                            {{-- Phone --}}
                             <div class="col-md-6">
 
                                 <label class="hw-form-label">
@@ -219,11 +221,128 @@
                                     <span>*</span>
                                 </label>
 
-                                <input type="tel"
-                                       name="phone"
-                                       class="form-control hw-input"
-                                       placeholder="Enter phone number"
-                                       required>
+                                <div class="hw-phone-verification">
+
+                                    <div class="input-group">
+
+                                        <select name="country_code"
+                                                id="countryCode"
+                                                class="form-select hw-input hw-country-code"
+                                                style="max-width: 160px; flex: 0 0 auto;">
+
+                                            <option value="+91" selected>🇮🇳 +91</option>
+                                            <option value="+1">🇺🇸 +1</option>
+                                            <option value="+44">🇬🇧 +44</option>
+                                            <option value="+971">🇦🇪 +971</option>
+                                            <option value="+61">🇦🇺 +61</option>
+                                            <option value="+65">🇸🇬 +65</option>
+
+                                        </select>
+
+                                        <input type="tel"
+                                            name="phone"
+                                            id="registrationPhone"
+                                            class="form-control hw-input"
+                                            placeholder="Enter phone number"
+                                            autocomplete="tel"
+                                            inputmode="tel"
+                                            maxlength="10"
+                                            required>
+
+                                    </div>
+
+                                    <button type="button"
+                                            class="hw-verify-phone-btn"
+                                            id="requestPhoneOtp">
+
+                                        Verify
+
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+
+                            {{-- Phone OTP --}}
+
+                            <div class="col-12"
+                                 id="phoneOtpSection"
+                                 hidden
+                                 aria-live="polite">
+
+                                <div class="hw-otp-panel">
+
+                                    <div class="hw-otp-heading">
+
+                                        <div>
+
+                                            <label class="hw-form-label"
+                                                   for="phoneOtp1">
+                                                Verify phone number
+                                                <span>*</span>
+                                            </label>
+
+                                            <p class="hw-otp-help"
+                                               id="phoneOtpMessage">
+                                                Enter the 6-digit OTP sent to your phone.
+                                            </p>
+
+                                        </div>
+
+                                        <button type="button"
+                                                class="hw-resend-otp-btn"
+                                                id="resendPhoneOtp">
+
+                                            Resend OTP
+
+                                        </button>
+
+                                    </div>
+
+                                    <div class="hw-otp-fields"
+                                         id="phoneOtpFields">
+
+                                        @for ($digit = 1; $digit <= 6; $digit++)
+                                            <input type="text"
+                                                   id="phoneOtp{{ $digit }}"
+                                                   class="hw-otp-input"
+                                                   inputmode="numeric"
+                                                   autocomplete="{{ $digit === 1 ? 'one-time-code' : 'off' }}"
+                                                   maxlength="1"
+                                                   aria-label="OTP digit {{ $digit }}"
+                                                   disabled>
+                                        @endfor
+
+                                    </div>
+
+                                    <input type="hidden"
+                                           name="phone_otp"
+                                           id="phoneOtp">
+
+                                    <input type="hidden"
+                                           name="phone_verified"
+                                           id="phoneVerified"
+                                           value="0">
+
+                                    <div class="hw-otp-footer">
+
+                                        <button type="button"
+                                                class="hw-confirm-otp-btn"
+                                                id="confirmPhoneOtp"
+                                                disabled>
+
+                                            Verify OTP
+
+                                        </button>
+
+                                        <span class="hw-otp-status"
+                                              id="phoneOtpStatus"
+                                              role="status"></span>
+
+                                    </div>
+
+                                </div>
 
                             </div>
 

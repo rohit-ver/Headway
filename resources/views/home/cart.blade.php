@@ -96,19 +96,16 @@
                                 Price on Request
                             </span>
 
-                            <div class="hw-qty-box">
-
-                                <button type="button">
-                                    <i class="bi bi-dash"></i>
-                                </button>
-
-                                <span>100 KG</span>
-
-                                <button type="button">
-                                    <i class="bi bi-plus"></i>
-                                </button>
-
-                            </div>
+                           <div class="hw-qty-box" data-moq="1" data-step="1" data-unit="Box    ">
+                            <button type="button" class="qty-decrease">
+                                <i class="bi bi-dash"></i>
+                            </button>
+                            <span class="qty-value">1 Box</span>
+                            <button type="button" class="qty-increase">
+                                <i class="bi bi-plus"></i>
+                            </button>
+                        </div>
+                        <small class="qty-warning text-danger" style="display:none;"></small>
 
                             <button class="hw-remove-btn">
                                 <i class="bi bi-trash3"></i>
@@ -392,3 +389,54 @@
 </section>
 
 @endsection
+
+@push('scripts')
+
+<script>
+document.querySelectorAll('.hw-qty-box').forEach(function (box) {
+
+    const moq = parseInt(box.dataset.moq, 10) || 1;
+    const step = parseInt(box.dataset.step, 10) || 1;
+    const unit = box.dataset.unit || '';
+
+    const qtySpan = box.querySelector('.qty-value');
+    const decreaseBtn = box.querySelector('.qty-decrease');
+    const increaseBtn = box.querySelector('.qty-increase');
+    const warningEl = box.nextElementSibling; // .qty-warning
+
+    let currentQty = parseInt(qtySpan.textContent, 10) || moq;
+
+    function updateDisplay() {
+        qtySpan.textContent = currentQty + ' ' + unit;
+    }
+
+    function showWarning(message) {
+        warningEl.textContent = message;
+        warningEl.style.display = 'block';
+        box.classList.add('qty-shake');
+
+        setTimeout(function () {
+            warningEl.style.display = 'none';
+            box.classList.remove('qty-shake');
+        }, 1800);
+    }
+
+    decreaseBtn.addEventListener('click', function () {
+        if (currentQty - step >= moq) {
+            currentQty -= step;
+            updateDisplay();
+        } else {
+            showWarning('Minimum order quantity is ' + moq + ' ' + unit);
+        }
+    });
+
+    increaseBtn.addEventListener('click', function () {
+        currentQty += step;
+        updateDisplay();
+    });
+
+});
+
+</script>
+
+@endpush

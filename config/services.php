@@ -35,4 +35,15 @@ return [
         ],
     ],
 
+    'twilio' => [
+        'sid'   => env('TWILIO_SID'),
+        'token' => env('TWILIO_AUTH_TOKEN'),
+        'from'  => env('TWILIO_FROM'),
+    ],
+
+    'msg91' => [
+    'auth_key' => env('MSG91_AUTH_KEY'),
+    'otp_template_id' => env('MSG91_OTP_TEMPLATE_ID'),
+],
+
 ];

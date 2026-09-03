@@ -16,7 +16,51 @@
 
         @include('components.registration-modal')
 
+        @include('components.forgot-password-modal')
+
     @endguest
+
+    @if (session('status'))
+<div class="toast-container position-fixed top-0 end-0 p-3" style="z-index: 9999">
+    <div id="successToast" class="toast align-items-center text-white bg-success border-0" role="alert">
+        <div class="d-flex">
+            <div class="toast-body">
+                {{ session('status') }}
+            </div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const toastEl = document.getElementById('successToast');
+        if (toastEl) {
+            const toast = new bootstrap.Toast(toastEl);
+            toast.show();
+        }
+
+        setTimeout(function () {
+            const loginModalEl = document.getElementById('loginModal');
+            if (loginModalEl) {
+                const loginModal = new bootstrap.Modal(loginModalEl);
+                loginModal.show();
+            }
+        }, 1000);
+    });
+</script>
+@endif
+@if ($errors->has('email') && old('password'))
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const loginModalEl = document.getElementById('loginModal');
+        if (loginModalEl) {
+            const loginModal = new bootstrap.Modal(loginModalEl);
+            loginModal.show();
+        }
+    });
+</script>
+@endif
 
 
     {{-- =====================================================
@@ -215,31 +259,23 @@
                              EXPLORE PRODUCTS BUTTON
                         ================================================== --}}
 
-                        @auth
-
-                            <a href="{{ route('home.product') }}"
-                               class="hero-btn">
+                       @customerAuth
+                            <a href="{{ route('products') }}"
+                            class="hero-btn explore-products-btn">
 
                                 Explore Products
-
                                 <i class="bi bi-arrow-right"></i>
-
                             </a>
-
                         @else
-
                             <a href="#"
-                               class="hero-btn"
-                               data-bs-toggle="modal"
-                               data-bs-target="#authChoiceModal">
+                            class="hero-btn explore-products-btn"
+                            data-bs-toggle="modal"
+                            data-bs-target="#authChoiceModal">
 
                                 Explore Products
-
                                 <i class="bi bi-arrow-right"></i>
-
                             </a>
-
-                        @endauth
+                        @endcustomerAuth
 
                     </div>
 

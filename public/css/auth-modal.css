@@ -2031,6 +2031,17 @@ select.hw-input {
     margin: 0;
 }
 
+.hw-country-code {
+    max-width: 100px;
+    min-width: 90px;
+    flex: 0 0 auto;
+    padding-left: 10px;
+    padding-right: 6px;
+    font-size: 14px;
+    color: #1a1a1a !important;      /* text hidden hone se rokega agar color white/transparent set tha */
+    background-color: #fff;
+    appearance: auto;                /* dropdown arrow properly dikhega */
+}
 
 /* --- Overall modal aur zyada compact (sirf size) --- */
 @media (min-width: 768px) {
@@ -2136,3 +2147,182 @@ select.hw-input {
         padding-right: 38px;
     }
 }
+
+/* Phone OTP verification */
+.hw-phone-verification {
+    display: flex;
+    align-items: stretch;
+    gap: 8px;
+}
+
+.hw-phone-verification .hw-input {
+    min-width: 0;
+}
+
+.hw-verify-phone-btn,
+.hw-confirm-otp-btn,
+.hw-resend-otp-btn {
+    border: 0;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.hw-verify-phone-btn {
+    flex: 0 0 auto;
+    min-width: 78px;
+    border-radius: 7px;
+    padding: 0 12px;
+    background: #a01414;
+    color: #fff;
+    font-size: 13px;
+}
+
+.hw-verify-phone-btn:hover,
+.hw-confirm-otp-btn:hover {
+    background: #7f1010;
+    transform: translateY(-1px);
+}
+
+.hw-verify-phone-btn.is-verified {
+    background: #1e7a46;
+}
+
+.hw-otp-panel {
+    padding: 14px;
+    border: 1px solid rgba(160, 20, 20, 0.18);
+    border-radius: 9px;
+    background: #fffaf8;
+}
+
+.hw-otp-heading,
+.hw-otp-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.hw-otp-help {
+    margin: -1px 0 0;
+    color: #6f655e;
+    font-size: 12px;
+}
+
+.hw-resend-otp-btn {
+    flex: 0 0 auto;
+    padding: 0;
+    background: transparent;
+    color: #a01414;
+    font-size: 12px;
+    text-decoration: underline;
+}
+
+.hw-resend-otp-btn:hover {
+    color: #7f1010;
+}
+
+.hw-otp-fields {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.hw-otp-input {
+    width: 42px;
+    height: 42px;
+    border: 1px solid #ded7c9;
+    border-radius: 7px;
+    background: #fff;
+    color: #242222;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+}
+
+.hw-otp-input:focus {
+    outline: none;
+    border-color: #a01414;
+    box-shadow: 0 0 0 3px rgba(160, 20, 20, 0.08);
+}
+
+.hw-otp-input:disabled {
+    background: #f4f1eb;
+    cursor: not-allowed;
+}
+
+.hw-otp-footer {
+    margin-top: 12px;
+}
+
+.hw-confirm-otp-btn {
+    min-height: 34px;
+    padding: 0 13px;
+    border-radius: 6px;
+    background: #a01414;
+    color: #fff;
+    font-size: 12px;
+}
+
+.hw-confirm-otp-btn:disabled {
+    background: #c9beb8;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.hw-otp-status {
+    color: #6f655e;
+    font-size: 12px;
+    text-align: right;
+}
+
+.hw-otp-status.is-verified {
+    color: #1e7a46;
+    font-weight: 700;
+}
+
+@media (max-width: 480px) {
+    .hw-phone-verification {
+        gap: 6px;
+    }
+
+    .hw-verify-phone-btn {
+        min-width: 68px;
+        padding: 0 9px;
+        font-size: 11px;
+    }
+
+    .hw-otp-panel {
+        padding: 11px;
+    }
+
+    .hw-otp-heading,
+    .hw-otp-footer {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 7px;
+    }
+
+    .hw-otp-fields {
+        justify-content: space-between;
+        gap: 5px;
+        width: 100%;
+    }
+
+    .hw-otp-input {
+        width: min(13.5vw, 39px);
+        height: 39px;
+    }
+
+    .hw-otp-status {
+        text-align: left;
+    }
+}
+
+    .hw-input-wrapper input.is-invalid {
+        border-color: #dc3545 !important;
+    }
+    .hw-input-wrapper input.is-invalid:focus {
+        box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+    }

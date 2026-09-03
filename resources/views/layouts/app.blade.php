@@ -33,6 +33,10 @@
 
     @stack('styles')
 </head>
+<script>
+  window.isUserLoggedIn = @json(auth()->check());
+</script>
+
 
 <body>
 
@@ -41,6 +45,7 @@
     <main>
         @yield('content')
     </main>
+    
 
     @include('layouts.footer')
 
@@ -50,6 +55,17 @@
 
     <!-- Main JS -->
     <script src="{{ asset('js/animation.js') }}"></script>
+
+    <!-- Auth modal routes & CSRF token (must be defined BEFORE auth-modal.js loads) -->
+    <script>
+        window.ROUTES = {
+            otpSend: "{{ route('otp.send') }}",
+            otpVerify: "{{ route('otp.verify') }}",
+            registerStore: "{{ route('register.store') }}"
+        };
+        window.CSRF_TOKEN = "{{ csrf_token() }}";
+    </script>
+
     <script src="{{ asset('js/auth-modal.js') }}"></script>
 
     @stack('scripts')

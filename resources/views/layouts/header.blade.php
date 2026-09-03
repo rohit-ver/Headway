@@ -56,7 +56,7 @@
 
                     <li class="nav-item">
                         <a class="nav-link {{ request()->is('contact') ? 'active' : '' }}"
-                        href="{{ url('/contactus') }}">
+                        href="{{ url('/contact_inquiries') }}">
                             Contact Us
                         </a>
                     </li>
@@ -75,7 +75,7 @@
                         </a>
 
                     </li>
-                    <!-- USER MENU -->
+                   <!-- USER MENU -->
                     <li class="nav-item user-menu">
 
                         <button type="button"
@@ -85,7 +85,11 @@
                             <i class="bi bi-person user-icon"></i>
 
                             <span class="user-name">
-                                Login
+                                @auth('customer')
+                                    {{ Auth::guard('customer')->user()->name }}
+                                @else
+                                    Login
+                                @endauth
                             </span>
 
                             <i class="bi bi-chevron-down arrow-icon"></i>
@@ -97,59 +101,75 @@
 
                         <div class="user-dropdown" id="userDropdown">
 
-                            <div class="user-dropdown-header">
+                            @auth('customer')
 
-                                <div class="user-dropdown-avatar">
+                                <div class="user-dropdown-header">
+
+                                    <div class="user-dropdown-avatar">
+                                        <i class="bi bi-person"></i>
+                                    </div>
+
+                                    <div class="user-dropdown-info">
+
+                                        <strong>
+                                            {{ Auth::guard('customer')->user()->name }}
+                                        </strong>
+
+                                        <span>
+                                            Business Buyer
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+
+                                <a href="#" class="user-dropdown-item">
                                     <i class="bi bi-person"></i>
+                                    My Profile
+                                </a>
+
+                                <a href="#" class="user-dropdown-item">
+                                    <i class="bi bi-box-seam"></i>
+                                    My Orders
+                                </a>
+
+                                <a href="#" class="user-dropdown-item">
+                                    <i class="bi bi-cart3"></i>
+                                    Inquiry Cart
+                                </a>
+
+                                <a href="#" class="user-dropdown-item">
+                                    <i class="bi bi-chat-left-text"></i>
+                                    My Inquiries
+                                </a>
+
+                                <div class="user-dropdown-divider"></div>
+
+                                <form action="{{ route('logout') }}" method="POST">
+                                    @csrf
+                                    <button type="submit" class="user-dropdown-item logout" style="border:none;background:none;width:100%;text-align:left;">
+                                        <i class="bi bi-box-arrow-right"></i>
+                                        Logout
+                                    </button>
+                                </form>
+
+                            @else
+
+                                <div class="user-dropdown-header">
+                                    <p style="margin:0;">Please login to continue</p>
                                 </div>
 
-                                <div class="user-dropdown-info">
+                                <a href="#" class="user-dropdown-item" data-open-login>
+                                    <i class="bi bi-box-arrow-in-right"></i>
+                                    Login
+                                </a>
 
-                                    <strong>
-                                        User Name
-                                    </strong>
-
-                                    <span>
-                                        Business Buyer
-                                    </span>
-
-                                </div>
-
-                            </div>
-
-
-                            <a href="#" class="user-dropdown-item">
-                                <i class="bi bi-person"></i>
-                                My Profile
-                            </a>
-
-                            <a href="#" class="user-dropdown-item">
-                                <i class="bi bi-box-seam"></i>
-                                My Orders
-                            </a>
-
-                            <a href="#" class="user-dropdown-item">
-                                <i class="bi bi-cart3"></i>
-                                Inquiry Cart
-                            </a>
-
-                            <a href="#" class="user-dropdown-item">
-                                <i class="bi bi-chat-left-text"></i>
-                                My Inquiries
-                            </a>
-
-                            <div class="user-dropdown-divider"></div>
-
-
-                            <a href="#" class="user-dropdown-item logout">
-                                <i class="bi bi-box-arrow-right"></i>
-                                Logout
-                            </a>
+                            @endauth
 
                         </div>
 
                     </li>
-                </ul>
 
             </div>
 

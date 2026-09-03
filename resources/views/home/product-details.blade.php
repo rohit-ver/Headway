@@ -314,7 +314,7 @@
                     <div class="product-detail-actions">
 
                         <a
-                            href="#"
+                            href="{{route('buyer.inquiry')}}"
                             class="request-quote-btn"
                         >
 

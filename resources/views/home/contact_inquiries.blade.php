@@ -292,17 +292,17 @@
                     </div>
 
 
-                    <form action="#" method="POST">
+                    <form action="{{ route('contact.store') }}"
+                            method="POST"
+                            class="row g-3 needs-validation"
+                            novalidate>
 
-                        @csrf
-
-                        <div class="row g-4">
+                            @csrf
 
                             {{-- NAME --}}
-
                             <div class="col-md-6">
 
-                                <label class="contact-label">
+                                <label class="contact-label" for="validationName">
                                     Full Name
                                     <span>*</span>
                                 </label>
@@ -312,9 +312,26 @@
                                     <i class="bi bi-person"></i>
 
                                     <input type="text"
-                                           name="name"
-                                           placeholder="Enter your name"
-                                           required>
+                                        name="name"
+                                        id="validationName"
+                                        class="form-control @error('name') is-invalid @enderror"
+                                        value="{{ old('name') }}"
+                                        placeholder="Enter your name"
+                                        minlength="2"
+                                        maxlength="150"
+                                        required>
+
+                                    <div class="valid-feedback">
+                                        Looks good!
+                                    </div>
+
+                                    <div class="invalid-feedback">
+                                        @error('name')
+                                            {{ $message }}
+                                        @else
+                                            Please enter your full name.
+                                        @enderror
+                                    </div>
 
                                 </div>
 
@@ -322,11 +339,10 @@
 
 
                             {{-- EMAIL --}}
-
                             <div class="col-md-6">
 
-                                <label class="contact-label">
-                                     Email
+                                <label class="contact-label" for="validationEmail">
+                                    Email
                                     <span>*</span>
                                 </label>
 
@@ -335,19 +351,35 @@
                                     <i class="bi bi-envelope"></i>
 
                                     <input type="email"
-                                           name="email"
-                                           placeholder="Enter business email"
-                                           required>
+                                        name="email"
+                                        id="validationEmail"
+                                        class="form-control @error('email') is-invalid @enderror"
+                                        value="{{ old('email') }}"
+                                        placeholder="Enter business email"
+                                        maxlength="150"
+                                        required>
+
+                                    <div class="valid-feedback">
+                                        Looks good!
+                                    </div>
+
+                                    <div class="invalid-feedback">
+                                        @error('email')
+                                            {{ $message }}
+                                        @else
+                                            Please enter a valid email address.
+                                        @enderror
+                                    </div>
 
                                 </div>
 
                             </div>
 
-                            {{-- PHONE --}}
 
+                            {{-- PHONE --}}
                             <div class="col-md-6">
 
-                                <label class="contact-label">
+                                <label class="contact-label" for="validationPhone">
                                     Phone Number
                                     <span>*</span>
                                 </label>
@@ -357,31 +389,65 @@
                                     <i class="bi bi-telephone"></i>
 
                                     <input type="tel"
-                                           name="phone"
-                                           placeholder="Enter phone number"
-                                           required>
+                                        name="phone"
+                                        id="validationPhone"
+                                        class="form-control @error('phone') is-invalid @enderror"
+                                        value="{{ old('phone') }}"
+                                        placeholder="Enter phone number"
+                                        pattern="[0-9]{10,15}"
+                                        maxlength="15"
+                                        required>
+
+                                    <div class="valid-feedback">
+                                        Looks good!
+                                    </div>
+
+                                    <div class="invalid-feedback">
+                                        @error('phone')
+                                            {{ $message }}
+                                        @else
+                                            Please enter a valid phone number.
+                                        @enderror
+                                    </div>
 
                                 </div>
 
                             </div>
 
-                            {{--Whatsapp Number --}}
 
+                            {{-- WHATSAPP --}}
                             <div class="col-md-6">
 
-                                <label class="contact-label">
-                                    Whatsapp Number
+                                <label class="contact-label" for="validationWhatsapp">
+                                    WhatsApp Number
                                     <span>*</span>
                                 </label>
 
                                 <div class="contact-input-wrapper">
 
-                                    <i class="bi bi-telephone"></i>
+                                    <i class="bi bi-whatsapp"></i>
 
                                     <input type="tel"
-                                           name="phone"
-                                           placeholder="Enter Whatsapp number"
-                                           required>
+                                        name="whatsapp"
+                                        id="validationWhatsapp"
+                                        class="form-control @error('whatsapp') is-invalid @enderror"
+                                        value="{{ old('whatsapp') }}"
+                                        placeholder="Enter WhatsApp number"
+                                        pattern="[0-9]{10,15}"
+                                        maxlength="15"
+                                        required>
+
+                                    <div class="valid-feedback">
+                                        Looks good!
+                                    </div>
+
+                                    <div class="invalid-feedback">
+                                        @error('whatsapp')
+                                            {{ $message }}
+                                        @else
+                                            Please enter a valid WhatsApp number.
+                                        @enderror
+                                    </div>
 
                                 </div>
 
@@ -389,10 +455,9 @@
 
 
                             {{-- CUSTOMER TYPE --}}
-
                             <div class="col-md-6">
 
-                                <label class="contact-label">
+                                <label class="contact-label" for="validationCustomerType">
                                     Customer Type
                                 </label>
 
@@ -400,33 +465,46 @@
 
                                     <i class="bi bi-briefcase"></i>
 
-                                    <select name="customer_type">
+                                    <select name="customer_type"
+                                            id="validationCustomerType"
+                                            class="form-select @error('customer_type') is-invalid @enderror">
 
                                         <option value="">
                                             Select customer type
                                         </option>
 
-                                        <option value="domestic">
+                                        <option value="domestic"
+                                            {{ old('customer_type') == 'domestic' ? 'selected' : '' }}>
                                             Domestic Buyer
                                         </option>
 
-                                        <option value="international">
+                                        <option value="international"
+                                            {{ old('customer_type') == 'international' ? 'selected' : '' }}>
                                             International Buyer
                                         </option>
 
-                                        <option value="retailer">
+                                        <option value="retailer"
+                                            {{ old('customer_type') == 'retailer' ? 'selected' : '' }}>
                                             Retailer
                                         </option>
 
-                                        <option value="wholesaler">
+                                        <option value="wholesaler"
+                                            {{ old('customer_type') == 'wholesaler' ? 'selected' : '' }}>
                                             Wholesaler
                                         </option>
 
-                                        <option value="distributor">
+                                        <option value="distributor"
+                                            {{ old('customer_type') == 'distributor' ? 'selected' : '' }}>
                                             Distributor
                                         </option>
 
                                     </select>
+
+                                    <div class="invalid-feedback">
+                                        @error('customer_type')
+                                            {{ $message }}
+                                        @enderror
+                                    </div>
 
                                 </div>
 
@@ -434,10 +512,9 @@
 
 
                             {{-- SUBJECT --}}
-
                             <div class="col-md-6">
 
-                                <label class="contact-label">
+                                <label class="contact-label" for="validationSubject">
                                     Subject
                                 </label>
 
@@ -445,33 +522,46 @@
 
                                     <i class="bi bi-chat-left-text"></i>
 
-                                    <select name="subject">
+                                    <select name="subject"
+                                            id="validationSubject"
+                                            class="form-select @error('subject') is-invalid @enderror">
 
                                         <option value="">
                                             Select enquiry type
                                         </option>
 
-                                        <option value="bulk-order">
+                                        <option value="bulk-order"
+                                            {{ old('subject') == 'bulk-order' ? 'selected' : '' }}>
                                             Bulk Order
                                         </option>
 
-                                        <option value="product-enquiry">
+                                        <option value="product-enquiry"
+                                            {{ old('subject') == 'product-enquiry' ? 'selected' : '' }}>
                                             Product Enquiry
                                         </option>
 
-                                        <option value="export">
+                                        <option value="export"
+                                            {{ old('subject') == 'export' ? 'selected' : '' }}>
                                             Export Enquiry
                                         </option>
 
-                                        <option value="packaging">
+                                        <option value="packaging"
+                                            {{ old('subject') == 'packaging' ? 'selected' : '' }}>
                                             Packaging Requirement
                                         </option>
 
-                                        <option value="other">
+                                        <option value="other"
+                                            {{ old('subject') == 'other' ? 'selected' : '' }}>
                                             Other
                                         </option>
 
                                     </select>
+
+                                    <div class="invalid-feedback">
+                                        @error('subject')
+                                            {{ $message }}
+                                        @enderror
+                                    </div>
 
                                 </div>
 
@@ -479,10 +569,9 @@
 
 
                             {{-- MESSAGE --}}
-
                             <div class="col-12">
 
-                                <label class="contact-label">
+                                <label class="contact-label" for="validationMessage">
                                     Message
                                     <span>*</span>
                                 </label>
@@ -492,9 +581,25 @@
                                     <i class="bi bi-pencil-square"></i>
 
                                     <textarea name="message"
-                                              rows="5"
-                                              placeholder="Tell us about your requirements..."
-                                              required></textarea>
+                                            id="validationMessage"
+                                            rows="5"
+                                            class="form-control @error('message') is-invalid @enderror"
+                                            placeholder="Tell us about your requirements..."
+                                            minlength="10"
+                                            maxlength="5000"
+                                            required>{{ old('message') }}</textarea>
+
+                                    <div class="valid-feedback">
+                                        Looks good!
+                                    </div>
+
+                                    <div class="invalid-feedback">
+                                        @error('message')
+                                            {{ $message }}
+                                        @else
+                                            Please enter your requirements.
+                                        @enderror
+                                    </div>
 
                                 </div>
 
@@ -502,7 +607,6 @@
 
 
                             {{-- SUBMIT --}}
-
                             <div class="col-12">
 
                                 <button type="submit"
@@ -516,9 +620,7 @@
 
                             </div>
 
-                        </div>
-
-                    </form>
+                        </form>
 
                 </div>
 
@@ -568,5 +670,33 @@
     </div>
 
 </section>
+<script>
+    document.getElementById('contactForm').addEventListener('submit', function (e) {
+  e.preventDefault();
+  const form = this;
+
+  fetch(form.action, {
+    method: 'POST',
+    body: new FormData(form),
+    headers: {
+      'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
+      'Accept': 'application/json'
+    }
+  })
+    .then(res => res.json())
+    .then(data => {
+      if (data.success) {
+        showToast('success', 'Message Sent!', 'Hum jaldi aapse contact karenge.');
+        form.reset();
+      } else {
+        showToast('error', 'Something went wrong', data.message || 'Please try again.');
+      }
+    })
+    .catch(() => {
+      showToast('error', 'Network Error', 'Please check your connection.');
+    });
+});
+</script>
 
 @endsection
+

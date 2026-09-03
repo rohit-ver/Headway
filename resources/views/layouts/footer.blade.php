@@ -90,6 +90,11 @@
                     +91 00000 00000
                 </p>
 
+                <p>
+                    <i class="bi bi-geo-alt"></i>
+                    Jaipur, Rajasthan, India
+                </p>
+
             </div>
 
         </div>
