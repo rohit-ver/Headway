@@ -66,7 +66,7 @@
                     </li>
 
                     <li>
-                        <a href="{{ url('/contact') }}">
+                        <a href="{{ url('/contact_inquiries') }}">
                             Inquiry
                         </a>
                     </li>

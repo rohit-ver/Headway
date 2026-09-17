@@ -8,14 +8,11 @@
          AUTH MODALS
     ====================================================== --}}
 
-    @guest
+    @guest('customer')
 
         @include('components.auth-modal')
-
         @include('components.login-modal')
-
         @include('components.registration-modal')
-
         @include('components.forgot-password-modal')
 
     @endguest

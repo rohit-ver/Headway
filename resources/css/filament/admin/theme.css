@@ -1,0 +1,1262 @@
+@import "/vendor/filament/filament/resources/css/theme.css";
+
+/* =========================================================
+   HEADWAY FILAMENT ADMIN THEME
+   Premium • Clean • Professional • Responsive
+========================================================= */
+
+:root {
+    /* Brand Colors */
+    --headway-ivory: #FAF7F0;
+    --headway-beige: #F1E9DB;
+    --headway-white: #FFFFFF;
+    --headway-charcoal: #242222;
+    --headway-burgundy: #4A1014;
+    --headway-red: #ED1C24;
+    --headway-gold: #F4DB69;
+
+    /* UI Colors */
+    --headway-border: #E8DED0;
+    --headway-muted: #756C65;
+    --headway-success: #16804A;
+    --headway-danger: #B42318;
+
+    /* Effects */
+    --headway-radius: 10px;
+    --headway-transition: 0.2s ease;
+    --headway-shadow: 0 4px 18px rgba(36, 34, 34, 0.06);
+}
+
+
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+.fi-body {
+    background: var(--headway-ivory) !important;
+    color: var(--headway-charcoal);
+}
+
+body {
+    background: var(--headway-ivory);
+}
+
+* {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.25) transparent;
+}
+
+
+/* =========================================================
+   SIDEBAR
+========================================================= */
+
+.fi-sidebar {
+    background: var(--headway-burgundy) !important;
+    border-right: none !important;
+}
+
+/* Sidebar Header */
+
+.fi-sidebar-header {
+    background: var(--headway-burgundy) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
+}
+
+/* Sidebar Navigation */
+
+.fi-sidebar-item {
+    margin: 3px 10px;
+    border-radius: 9px;
+    transition:
+        background var(--headway-transition),
+        transform var(--headway-transition);
+}
+
+/* Normal Text */
+
+.fi-sidebar-item-label {
+    color: var(--headway-ivory) !important;
+    font-weight: 500;
+    transition: color var(--headway-transition);
+}
+
+/* Normal Icon */
+
+.fi-sidebar-item-icon {
+    color: var(--headway-gold) !important;
+    transition:
+        color var(--headway-transition),
+        transform var(--headway-transition);
+}
+
+
+/* =========================================================
+   SIDEBAR HOVER
+========================================================= */
+
+.fi-sidebar-item:hover {
+    background: var(--headway-white) !important;
+    transform: translateX(2px);
+}
+
+.fi-sidebar-item:hover .fi-sidebar-item-label {
+    color: var(--headway-charcoal) !important;
+}
+
+.fi-sidebar-item:hover .fi-sidebar-item-icon {
+    color: var(--headway-charcoal) !important;
+    transform: translateX(2px);
+}
+
+
+/* =========================================================
+   SIDEBAR ACTIVE
+========================================================= */
+
+.fi-sidebar-item-active {
+    background: rgba(244, 219, 105, 0.14) !important;
+}
+
+.fi-sidebar-item-active .fi-sidebar-item-label {
+    color: var(--headway-black) !important;
+    font-weight: 600;
+}
+
+.fi-sidebar-item-active .fi-sidebar-item-icon {
+    color: var(--headway-gold) !important;
+}
+
+
+/* =========================================================
+   TOP BAR
+========================================================= */
+
+.fi-topbar {
+    background: rgba(255, 255, 255, 0.96) !important;
+    border-bottom: 1px solid var(--headway-border) !important;
+    box-shadow: 0 2px 10px rgba(36, 34, 34, 0.04);
+}
+
+
+/* =========================================================
+   PAGE HEADER
+========================================================= */
+
+.fi-header {
+    padding-bottom: 1.25rem;
+}
+
+.fi-header-heading {
+    color: var(--headway-charcoal) !important;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+.fi-header-subheading {
+    color: var(--headway-muted) !important;
+}
+
+
+/* =========================================================
+   CARDS / SECTIONS
+========================================================= */
+
+.fi-section,
+.fi-card {
+    background: var(--headway-white) !important;
+    border: 1px solid var(--headway-border) !important;
+    border-radius: var(--headway-radius) !important;
+    box-shadow: var(--headway-shadow);
+    transition:
+        box-shadow var(--headway-transition),
+        transform var(--headway-transition);
+}
+
+.fi-section:hover,
+.fi-card:hover {
+    box-shadow: 0 8px 28px rgba(36, 34, 34, 0.09);
+}
+
+
+/* =========================================================
+   FORM LABELS
+========================================================= */
+
+.fi-fo-field-wrp-label {
+    color: var(--headway-charcoal) !important;
+    font-weight: 600 !important;
+}
+
+
+/* =========================================================
+   INPUT FIELDS
+========================================================= */
+
+.fi-input,
+.fi-select-input,
+.fi-fo-textarea {
+    background: var(--headway-white) !important;
+    border: 1px solid var(--headway-border) !important;
+    border-radius: 8px !important;
+    color: var(--headway-charcoal) !important;
+
+    transition:
+        border-color var(--headway-transition),
+        box-shadow var(--headway-transition),
+        transform var(--headway-transition);
+}
+
+/* Placeholder */
+
+.fi-input::placeholder,
+.fi-fo-textarea::placeholder {
+    color: #A49A91 !important;
+}
+
+/* Input Hover */
+
+.fi-input:hover,
+.fi-select-input:hover,
+.fi-fo-textarea:hover {
+    border-color: #CBBBA8 !important;
+}
+
+/* Input Focus */
+
+.fi-input:focus,
+.fi-select-input:focus,
+.fi-fo-textarea:focus {
+    border-color: var(--headway-red) !important;
+    box-shadow: 0 0 0 3px rgba(237, 28, 36, 0.10) !important;
+    outline: none !important;
+}
+
+
+/* =========================================================
+   CHECKBOX / RADIO
+========================================================= */
+
+.fi-checkbox-input:checked,
+.fi-radio-input:checked {
+    background-color: var(--headway-red) !important;
+    border-color: var(--headway-red) !important;
+}
+
+
+/* =========================================================
+   PRIMARY BUTTON
+========================================================= */
+
+.fi-btn-primary {
+    background: var(--headway-red) !important;
+    color: var(--headway-white) !important;
+    border-radius: 8px !important;
+    font-weight: 600 !important;
+
+    transition:
+        background var(--headway-transition),
+        transform var(--headway-transition),
+        box-shadow var(--headway-transition);
+}
+
+.fi-btn-primary:hover {
+    background: #C9161D !important;
+    transform: translateY(-1px);
+    box-shadow: 0 5px 14px rgba(237, 28, 36, 0.22);
+}
+
+.fi-btn-primary:active {
+    transform: translateY(0);
+}
+
+
+/* =========================================================
+   SECONDARY BUTTON
+========================================================= */
+
+.fi-btn {
+    border-radius: 8px !important;
+    transition:
+        background var(--headway-transition),
+        color var(--headway-transition),
+        transform var(--headway-transition);
+}
+
+.fi-btn:hover {
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   TABLE
+========================================================= */
+
+.fi-ta-ctn {
+    background: var(--headway-white) !important;
+    border: 1px solid var(--headway-border) !important;
+    border-radius: var(--headway-radius) !important;
+    box-shadow: var(--headway-shadow);
+    overflow: hidden;
+}
+
+/* Table Header */
+
+.fi-ta-header-cell {
+    background: var(--headway-beige) !important;
+    color: var(--headway-charcoal) !important;
+    font-weight: 700 !important;
+}
+
+/* Table Rows */
+
+.fi-ta-row {
+    transition:
+        background var(--headway-transition),
+        transform var(--headway-transition);
+}
+
+.fi-ta-row:hover {
+    background: #FCFAF6 !important;
+}
+
+
+/* =========================================================
+   SEARCH INPUT
+========================================================= */
+
+.fi-ta-search-field {
+    transition:
+        border-color var(--headway-transition),
+        box-shadow var(--headway-transition);
+}
+
+.fi-ta-search-field:focus-within {
+    box-shadow: 0 0 0 3px rgba(237, 28, 36, 0.08);
+}
+
+
+/* =========================================================
+   BADGES
+========================================================= */
+
+.fi-badge {
+    border-radius: 999px !important;
+    font-weight: 600 !important;
+}
+
+
+/* =========================================================
+   SUCCESS
+========================================================= */
+
+.fi-color-success {
+    color: var(--headway-success) !important;
+}
+
+
+/* =========================================================
+   DANGER
+========================================================= */
+
+.fi-color-danger {
+    color: var(--headway-danger) !important;
+}
+
+
+/* =========================================================
+   LINKS
+========================================================= */
+
+.fi-link {
+    color: var(--headway-red) !important;
+    transition: color var(--headway-transition);
+}
+
+.fi-link:hover {
+    color: #B9141A !important;
+}
+
+
+/* =========================================================
+   PAGINATION
+========================================================= */
+
+.fi-pagination-item {
+    border-radius: 7px !important;
+    transition:
+        background var(--headway-transition),
+        color var(--headway-transition);
+}
+
+.fi-pagination-item:hover {
+    background: var(--headway-beige) !important;
+}
+
+
+/* =========================================================
+   DROPDOWN / MENU
+========================================================= */
+
+.fi-dropdown-panel {
+    background: var(--headway-white) !important;
+    border: 1px solid var(--headway-border) !important;
+    border-radius: 10px !important;
+    box-shadow: 0 10px 30px rgba(36, 34, 34, 0.12) !important;
+}
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+.fi-modal-window {
+    border-radius: 12px !important;
+    box-shadow: 0 20px 60px rgba(36, 34, 34, 0.18) !important;
+}
+
+
+/* =========================================================
+   FILE UPLOAD
+========================================================= */
+
+.fi-fo-file-upload {
+    border: 1px dashed #CDBEAD !important;
+    border-radius: 10px !important;
+    transition:
+        border-color var(--headway-transition),
+        background var(--headway-transition);
+}
+
+.fi-fo-file-upload:hover {
+    border-color: var(--headway-red) !important;
+    background: rgba(237, 28, 36, 0.025) !important;
+}
+
+
+/* =========================================================
+   TOGGLE
+========================================================= */
+
+.fi-toggle-input:checked + .fi-toggle {
+    background: var(--headway-red) !important;
+}
+
+
+/* =========================================================
+   LOADING ANIMATION
+========================================================= */
+
+.fi-btn[wire\:loading],
+.fi-btn[wire\:loading\.delay] {
+    transition: opacity var(--headway-transition);
+}
+
+
+/* =========================================================
+   SCROLLBAR
+========================================================= */
+
+.fi-sidebar::-webkit-scrollbar {
+    width: 5px;
+}
+
+.fi-sidebar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.fi-sidebar::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.20);
+    border-radius: 10px;
+}
+
+.fi-sidebar::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.35);
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .fi-header-heading {
+        font-size: 1.35rem !important;
+    }
+
+    .fi-section,
+    .fi-card {
+        border-radius: 8px !important;
+    }
+
+    .fi-sidebar-item {
+        margin-left: 6px;
+        margin-right: 6px;
+    }
+}
+.fi-sidebar-item.fi-active {
+    background: var(--headway-charcoal) !important;
+    border-radius: 8px;
+}
+
+.fi-sidebar-item.fi-active .fi-sidebar-item-label,
+.fi-sidebar-item.fi-active .fi-sidebar-item-icon {
+    color: var(--headway-black) !important;
+}
+
+/* Headway Logo Size */
+.fi-sidebar-header a img {
+    height: 60px !important;
+    width: auto !important;
+    max-height: none !important;
+    max-width: 220px !important;
+}
+
+/* =========================================================
+   HEADWAY DASHBOARD - STATS CARDS
+   ========================================================= */
+
+.fi-wi-stats-overview {
+    margin-bottom: 1.5rem;
+}
+
+.fi-wi-stats-overview .fi-wi-stats-overview-stat {
+    position: relative;
+    overflow: hidden;
+
+    background: linear-gradient(
+        135deg,
+        #ffffff 0%,
+        #faf7f0 100%
+    ) !important;
+
+    border: 1px solid rgba(74, 16, 20, 0.08) !important;
+    border-radius: 18px !important;
+
+    box-shadow:
+        0 4px 18px rgba(36, 34, 34, 0.06),
+        0 1px 3px rgba(36, 34, 34, 0.04) !important;
+
+    padding: 1.25rem !important;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease !important;
+}
+
+/* Hover */
+.fi-wi-stats-overview .fi-wi-stats-overview-stat:hover {
+    transform: translateY(-5px);
+
+    border-color: rgba(74, 16, 20, 0.18) !important;
+
+    box-shadow:
+        0 12px 30px rgba(74, 16, 20, 0.10),
+        0 3px 8px rgba(36, 34, 34, 0.06) !important;
+}
+
+/* Stat label */
+.fi-wi-stats-overview-stat .fi-wi-stats-overview-stat-label {
+    color: #6b6258 !important;
+
+    font-size: 0.82rem !important;
+    font-weight: 600 !important;
+
+    letter-spacing: 0.02em;
+}
+
+/* Main number */
+.fi-wi-stats-overview-stat .fi-wi-stats-overview-stat-value {
+    color: #242222 !important;
+
+    font-size: 2rem !important;
+    font-weight: 700 !important;
+
+    letter-spacing: -0.03em;
+}
+
+/* Description */
+.fi-wi-stats-overview-stat .fi-wi-stats-overview-stat-description {
+    color: #81776c !important;
+
+    font-size: 0.75rem !important;
+}
+
+/* Description icon */
+.fi-wi-stats-overview-stat
+.fi-wi-stats-overview-stat-description-icon {
+    color: #4a1014 !important;
+}
+
+/* Icon */
+.fi-wi-stats-overview-stat .fi-wi-stats-overview-stat-icon {
+    background: #4a1014 !important;
+    color: #f4db69 !important;
+
+    border-radius: 12px !important;
+
+    padding: 0.65rem !important;
+
+    box-shadow: 0 5px 12px rgba(74, 16, 20, 0.15);
+}
+
+/* Decorative glow */
+.fi-wi-stats-overview-stat::after {
+    content: "";
+
+    position: absolute;
+
+    width: 100px;
+    height: 100px;
+
+    right: -45px;
+    bottom: -45px;
+
+    background: rgba(244, 219, 105, 0.12);
+
+    border-radius: 50%;
+
+    pointer-events: none;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    .fi-wi-stats-overview .fi-wi-stats-overview-stat {
+        border-radius: 15px !important;
+        padding: 1rem !important;
+    }
+
+    .fi-wi-stats-overview-stat .fi-wi-stats-overview-stat-value {
+        font-size: 1.65rem !important;
+    }
+}
+
+/* Remove white background behind table status/state */
+.fi-ta-cell:has(.fi-badge) {
+    background: transparent !important;
+}
+/* =========================================================
+   HEADWAY ADMIN DASHBOARD
+   ========================================================= */
+
+/* Dashboard background only */
+.fi-panel-admin {
+    background: #faf7f0 !important;
+}
+
+
+/* =========================================================
+   STATS WIDGET
+   ========================================================= */
+
+.fi-panel-admin .fi-wi-stats-overview {
+    background: transparent !important;
+}
+
+/* Remove only stats widget wrapper background */
+.fi-panel-admin .fi-wi-stats-overview .fi-section,
+.fi-panel-admin .fi-wi-stats-overview .fi-section-content-ctn,
+.fi-panel-admin .fi-wi-stats-overview .fi-section-content {
+    background: transparent !important;
+    background-image: none !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+
+/* Stats cards */
+.fi-panel-admin .fi-wi-stats-overview-stat {
+    position: relative;
+    overflow: hidden;
+
+    background: linear-gradient(
+        135deg,
+        #ffffff 0%,
+        #faf7f0 100%
+    ) !important;
+
+    border: 1px solid rgba(74, 16, 20, 0.08) !important;
+
+    border-radius: 18px !important;
+
+    box-shadow:
+        0 4px 18px rgba(36, 34, 34, 0.06),
+        0 1px 3px rgba(36, 34, 34, 0.04) !important;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease !important;
+}
+
+
+/* Stats hover */
+.fi-panel-admin .fi-wi-stats-overview-stat:hover {
+    transform: translateY(-5px);
+
+    border-color: rgba(74, 16, 20, 0.18) !important;
+
+    box-shadow:
+        0 12px 30px rgba(74, 16, 20, 0.10),
+        0 3px 8px rgba(36, 34, 34, 0.06) !important;
+}
+
+
+/* Gold decorative circle */
+.fi-panel-admin .fi-wi-stats-overview-stat::after {
+    content: "";
+
+    position: absolute;
+
+    width: 100px;
+    height: 100px;
+
+    right: -45px;
+    bottom: -45px;
+
+    background: rgba(244, 219, 105, 0.12);
+
+    border-radius: 50%;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   CHART
+   ========================================================= */
+
+.fi-panel-admin .fi-wi-chart {
+    margin-top: 1.5rem;
+}
+
+
+/* Chart card */
+.fi-panel-admin .fi-wi-chart .fi-section {
+    background: #ffffff !important;
+
+    border: 1px solid rgba(74, 16, 20, 0.08) !important;
+
+    border-radius: 20px !important;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 6px 24px rgba(36, 34, 34, 0.06),
+        0 1px 3px rgba(36, 34, 34, 0.03) !important;
+
+    transition:
+        box-shadow 0.3s ease,
+        transform 0.3s ease !important;
+}
+
+
+/* Chart hover */
+.fi-panel-admin .fi-wi-chart .fi-section:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 12px 32px rgba(74, 16, 20, 0.09),
+        0 2px 6px rgba(36, 34, 34, 0.04) !important;
+}
+
+
+/* Chart header */
+.fi-panel-admin .fi-wi-chart .fi-section-header {
+    padding: 1.25rem 1.5rem !important;
+
+    background: #ffffff !important;
+
+    border-bottom: 1px solid rgba(74, 16, 20, 0.06) !important;
+}
+
+
+/* Chart heading */
+.fi-panel-admin .fi-wi-chart .fi-section-header-heading {
+    color: #242222 !important;
+
+    font-size: 1.05rem !important;
+
+    font-weight: 700 !important;
+}
+
+
+/* Chart content */
+.fi-panel-admin .fi-wi-chart .fi-section-content-ctn,
+.fi-panel-admin .fi-wi-chart .fi-section-content {
+    background: #ffffff !important;
+
+    border: none !important;
+
+    box-shadow: none !important;
+}
+
+
+/* Chart content padding */
+.fi-panel-admin .fi-wi-chart .fi-section-content {
+    padding: 1.25rem 1.5rem 1.5rem !important;
+}
+
+
+/* =========================================================
+   CHART FILTER
+   ========================================================= */
+
+.fi-panel-admin .fi-wi-chart select {
+    appearance: none !important;
+    -webkit-appearance: none !important;
+
+    min-width: 150px !important;
+
+    height: 42px !important;
+
+    padding: 0 38px 0 14px !important;
+
+    background-color: #faf7f0 !important;
+
+    border: 1px solid rgba(74, 16, 20, 0.12) !important;
+
+    border-radius: 12px !important;
+
+    color: #4a1014 !important;
+
+    font-size: 0.78rem !important;
+
+    font-weight: 700 !important;
+
+    cursor: pointer;
+
+    transition:
+        all 0.25s ease !important;
+
+    background-image:
+        linear-gradient(
+            45deg,
+            transparent 50%,
+            #4a1014 50%
+        ),
+        linear-gradient(
+            135deg,
+            #4a1014 50%,
+            transparent 50%
+        ) !important;
+
+    background-position:
+        calc(100% - 17px) 17px,
+        calc(100% - 12px) 17px !important;
+
+    background-size:
+        5px 5px,
+        5px 5px !important;
+
+    background-repeat: no-repeat !important;
+}
+
+
+/* Filter hover */
+.fi-panel-admin .fi-wi-chart select:hover {
+    background-color: #ffffff !important;
+
+    border-color: rgba(74, 16, 20, 0.28) !important;
+
+    box-shadow:
+        0 5px 15px rgba(74, 16, 20, 0.08) !important;
+
+    transform: translateY(-1px);
+}
+
+
+/* Filter focus */
+.fi-panel-admin .fi-wi-chart select:focus {
+    outline: none !important;
+
+    background-color: #ffffff !important;
+
+    border-color: #4a1014 !important;
+
+    box-shadow:
+        0 0 0 3px rgba(74, 16, 20, 0.08),
+        0 5px 15px rgba(74, 16, 20, 0.06) !important;
+}
+
+
+/* =========================================================
+   CHART SIZE
+   ========================================================= */
+
+.fi-panel-admin .fi-wi-chart canvas {
+    max-height: 340px !important;
+}
+
+
+/* =========================================================
+   QUICK ACTIONS
+   ========================================================= */
+
+.fi-panel-admin .headway-quick-actions {
+    height: 100%;
+}
+
+
+/* Quick Actions section */
+.fi-panel-admin .headway-quick-actions .fi-section {
+    height: 100%;
+
+    background: #ffffff !important;
+    padding: 1.25rem !important;
+
+    border: 1px solid rgba(74, 16, 20, 0.08) !important;
+
+    border-radius: 20px !important;
+
+    box-shadow:
+        0 6px 24px rgba(36, 34, 34, 0.06),
+        0 1px 3px rgba(36, 34, 34, 0.03) !important;
+}
+
+
+/* =========================================
+   HEADWAY - COMPACT QUICK ACTIONS
+   ========================================= */
+
+.fi-panel-admin .headway-quick-actions .fi-section {
+    padding: 1.25rem !important;
+}
+
+.fi-panel-admin .quick-actions-header {
+    margin-bottom: 1rem !important;
+}
+
+.fi-panel-admin .quick-actions-header h2 {
+    font-size: 1.25rem !important;
+    line-height: 1.3 !important;
+    margin-bottom: 0.35rem !important;
+}
+
+.fi-panel-admin .quick-actions-header p {
+    font-size: 0.8rem !important;
+    margin: 0 !important;
+}
+
+/* Compact cards */
+.fi-panel-admin .quick-actions-grid {
+    gap: 0.6rem !important;
+}
+
+/* =========================================================
+   QUICK ACTIONS - COMPACT HEADER
+   ========================================================= */
+
+.fi-panel-admin .headway-quick-actions .fi-section {
+    padding: 1.25rem !important;
+}
+
+.fi-panel-admin .quick-actions-header {
+    margin-bottom: 1rem !important;
+}
+
+.fi-panel-admin .quick-actions-header h2 {
+    font-size: 1.25rem !important;
+    line-height: 1.3 !important;
+    margin-bottom: 0.35rem !important;
+}
+
+.fi-panel-admin .quick-actions-header p {
+    font-size: 0.8rem !important;
+    margin: 0 !important;
+}
+
+/* Compact cards */
+.fi-panel-admin .quick-actions-grid {
+    gap: 0.6rem !important;
+}
+
+.fi-panel-admin .quick-action-card {
+    min-height: 64px !important;
+    padding: 0.7rem 0.8rem !important;
+    border-radius: 12px !important;
+}
+
+/* Smaller icons */
+.fi-panel-admin .quick-action-icon {
+    width: 38px !important;
+    height: 38px !important;
+    min-width: 38px !important;
+    border-radius: 10px !important;
+}
+
+.fi-panel-admin .quick-action-icon svg {
+    width: 18px !important;
+    height: 18px !important;
+}
+
+/* Text */
+.fi-panel-admin .quick-action-content h3 {
+    font-size: 0.88rem !important;
+    line-height: 1.25 !important;
+    margin-bottom: 0.15rem !important;
+}
+
+.fi-panel-admin .quick-action-content p {
+    font-size: 0.7rem !important;
+    line-height: 1.2 !important;
+}
+
+/* Arrow */
+.fi-panel-admin .quick-action-arrow svg {
+    width: 15px !important;
+    height: 15px !important;
+}
+
+
+/* =========================================================
+   QUICK ACTION GRID
+   ========================================================= */
+
+.fi-panel-admin .quick-actions-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+}
+
+
+/* Quick Action Card */
+.fi-panel-admin .quick-action-card {
+    position: relative;
+    display: flex;
+    width: 100% !important;
+    align-items: center;
+    min-height: 78px;
+    padding: 1rem;
+    background: #ffffff !important;
+    border: 1px solid rgba(74, 16, 20, 0.08) !important;
+    border-radius: 15px !important;
+    text-decoration: none !important;
+    box-shadow: 0 4px 15px rgba(36, 34, 34, 0.04);
+    overflow: hidden;
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
+}
+
+
+/* Card hover */
+.fi-panel-admin .quick-action-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(74, 16, 20, 0.18) !important;
+    box-shadow: 0 10px 25px rgba(74, 16, 20, 0.09);
+}
+
+
+/* Quick Action icon */
+.fi-panel-admin .quick-action-icon {
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 12px;
+    border-radius: 12px;
+    transition: transform 0.3s ease;
+}
+
+.fi-panel-admin .quick-action-card:hover .quick-action-icon {
+    transform: scale(1.08) rotate(-3deg);
+}
+
+.fi-panel-admin .quick-action-icon svg {
+    width: 21px;
+    height: 21px;
+}
+
+
+/* Icons */
+.fi-panel-admin .product-icon {
+    background: rgba(74, 16, 20, 0.09);
+    color: #4a1014;
+}
+
+.fi-panel-admin .category-icon {
+    background: rgba(244, 219, 105, 0.22);
+    color: #8a7410;
+}
+
+.fi-panel-admin .inquiry-icon {
+    background: rgba(59, 91, 150, 0.10);
+    color: #3b5b96;
+}
+
+
+/* =========================================================
+   QUICK ACTION TEXT (FIX: proper flex space + no forced
+   character-level word breaking)
+   ========================================================= */
+
+.fi-panel-admin .quick-action-content {
+    flex: 1 1 auto !important;
+    min-width: 0;
+    overflow: hidden;
+}
+
+.fi-panel-admin .quick-action-content h3 {
+    margin: 0;
+    color: #242222;
+    font-size: 0.86rem;
+    font-weight: 700;
+    white-space: normal !important;
+    word-break: normal !important;
+    overflow-wrap: normal !important;
+    hyphens: none !important;
+}
+
+.fi-panel-admin .quick-action-content p {
+    margin: 4px 0 0;
+    color: #81776c;
+    font-size: 0.68rem;
+    white-space: normal !important;
+    word-break: normal !important;
+    overflow-wrap: normal !important;
+    hyphens: none !important;
+}
+
+
+/* Arrow */
+.fi-panel-admin .quick-action-arrow {
+    margin-left: auto;
+    flex-shrink: 0;
+    color: #a59b91;
+    transition:
+        transform 0.3s ease,
+        color 0.3s ease;
+}
+
+.fi-panel-admin .quick-action-arrow svg {
+    width: 16px;
+    height: 16px;
+}
+
+.fi-panel-admin .quick-action-card:hover .quick-action-arrow {
+    color: #4a1014;
+    transform: translate(3px, -3px);
+}
+
+
+/* =========================================================
+   CHART + QUICK ACTIONS
+   SIDE BY SIDE
+   ========================================================= */
+
+/*
+   IMPORTANT:
+   Stats = full width
+   Chart = left
+   Quick Actions = right
+*/
+
+.fi-panel-admin .fi-dashboard {
+    display: grid !important;
+    grid-template-columns:
+        minmax(0, 1.8fr)
+        minmax(320px, 1fr) !important;
+    gap: 1.5rem !important;
+    align-items: stretch !important;
+}
+
+
+/* Stats full width */
+.fi-panel-admin .fi-dashboard > .fi-wi-stats-overview {
+    grid-column: 1 / -1 !important;
+}
+
+
+/* Chart LEFT */
+.fi-panel-admin .fi-dashboard > .fi-wi-chart {
+    grid-column: 1 !important;
+    grid-row: 2 !important;
+}
+
+
+/* Quick Actions RIGHT */
+.fi-panel-admin .fi-dashboard > .fi-wi:has(.headway-quick-actions) {
+    grid-column: 2 !important;
+    grid-row: 2 !important;
+}
+
+
+/* =========================================================
+   DASHBOARD ONLY - REMOVE OUTER STRIP
+   ========================================================= */
+
+.fi-panel-admin > .fi-section,
+.fi-panel-admin > .fi-section-content-ctn {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1100px) {
+
+    .fi-panel-admin .fi-dashboard {
+        grid-template-columns: 1fr !important;
+    }
+
+    .fi-panel-admin .fi-dashboard > .fi-wi-stats-overview {
+        grid-column: 1 !important;
+    }
+
+    .fi-panel-admin .fi-dashboard > .fi-wi-chart,
+    .fi-panel-admin .fi-dashboard > .fi-wi:has(.headway-quick-actions) {
+        grid-column: 1 !important;
+        grid-row: auto !important;
+    }
+
+    /* FIX: was repeat(3, 1fr) — 3 columns at this width made each
+       card too narrow, which caused the text to visually "break".
+       2 columns gives each card enough room. */
+    .fi-panel-admin .quick-actions-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+@media (max-width: 768px) {
+
+    .fi-panel-admin .fi-wi-chart .fi-section {
+        border-radius: 16px !important;
+    }
+
+    .fi-panel-admin .fi-wi-chart .fi-section-header {
+        padding: 1rem !important;
+    }
+
+    .fi-panel-admin .fi-wi-chart .fi-section-content {
+        padding: 1rem !important;
+    }
+
+    .fi-panel-admin .fi-wi-chart select {
+        min-width: 200px !important;
+        height: 38px !important;
+        font-size: 0.72rem !important;
+    }
+
+    .fi-panel-admin .quick-actions-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .fi-panel-admin .quick-action-card {
+        min-height: 82px;
+    }
+}

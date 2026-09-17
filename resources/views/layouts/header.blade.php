@@ -60,22 +60,26 @@
                             Contact Us
                         </a>
                     </li>
-
-                    <!-- Cart -->
+                            <!-- Cart -->
                     <li class="nav-item cart-item">
 
-                        <a href="{{ url('cart') }}" class="cart-link">
+                        @auth('customer')
+                            <a href="{{ url('cart') }}" class="cart-link">
+                        @else
+                            <a href="javascript:void(0);" class="cart-link" onclick="openLoginModal()">
+                        @endauth
 
                             <i class="bi bi-cart3"></i>
 
-                            <span class="cart-count">
-                                0
+                            <span class="cart-count" id="cartCount">
+                                {{ $cartCount ?? 0 }}
                             </span>
 
                         </a>
 
                     </li>
-                   <!-- USER MENU -->
+                    
+                         <!-- USER MENU -->
                     <li class="nav-item user-menu">
 
                         <button type="button"

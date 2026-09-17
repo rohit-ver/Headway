@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>
         @yield('title', 'Headway')
@@ -34,9 +35,8 @@
     @stack('styles')
 </head>
 <script>
-  window.isUserLoggedIn = @json(auth()->check());
+  window.isUserLoggedIn = @json(auth('customer')->check());
 </script>
-
 
 <body>
 

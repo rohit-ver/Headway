@@ -1,3 +1,6 @@
+<!-- =========================================
+     CATEGORY SECTION
+========================================= -->
 
 <section class="products-section">
 
@@ -23,164 +26,69 @@
 
 
         <!-- Category Cards -->
-
         <div class="row g-4 category-row">
 
-            <!-- Makhana -->
+            @foreach ($categories as $index => $category)
 
-            <div class="col-lg-3 col-md-6">
+                <div class="col-lg-3 col-md-6">
 
-                <div class="category-card active">
+                    <div class="category-card @if($loop->first) active @endif">
 
-                    <div class="category-image">
+                        <div class="category-image">
 
-                        <img src="{{ asset('uploads/products/makhana.jpg') }}"
-                             alt="Makhana">
+                            @if($category->image)
 
-                        <div class="category-overlay"></div>
+                                <img src="{{ asset('storage/' . $category->image) }}"
+                                     alt="{{ $category->name }}">
 
-                    </div>
+                            @else
 
-                    <div class="category-content">
+                                <img src="{{ asset('uploads/products/default.jpg') }}"
+                                     alt="{{ $category->name }}">
 
-                        <span>01</span>
+                            @endif
 
-                        <h3>Makhana</h3>
+                            <div class="category-overlay"></div>
 
-                        <p>
-                            Premium quality fox nuts in multiple grades
-                            and sizes.
-                        </p>
+                        </div>
 
-                        <a href="{{ Auth::guard('customer')->check() ? route('products') : '#' }}"
-                            class="hero-btn explore-products-btn"
-                            @guest('customer')
-                                data-bs-toggle="modal"
-                                data-bs-target="#authChoiceModal"
-                            @endguest>
+
+                        <div class="category-content">
+
+                            <span>
+                                {{ str_pad($index + 1, 2, '0', STR_PAD_LEFT) }}
+                            </span>
+
+                            <h3>
+                                {{ $category->name }}
+                            </h3>
+
+                            <p>
+                                Premium quality products in multiple
+                                grades and sizes.
+                            </p>
+
+
+                            <a href="#{{ $category->slug }}-products"
+                               class="hero-btn explore-products-btn"
+                               @guest('customer')
+                                   data-bs-toggle="modal"
+                                   data-bs-target="#authChoiceModal"
+                               @endguest>
 
                                 Explore Products
+
                                 <i class="bi bi-arrow-right"></i>
+
                             </a>
-                    </div>
 
-                </div>
-
-            </div>
-
-
-            <!-- Namkeen -->
-
-            <div class="col-lg-3 col-md-6">
-
-                <div class="category-card">
-
-                    <div class="category-image">
-
-                        <img src="{{ asset('uploads/products/namkeen.jpg') }}"
-                             alt="Namkeen">
-
-                        <div class="category-overlay"></div>
-
-                    </div>
-
-                    <div class="category-content">
-
-                        <span>02</span>
-
-                        <h3>Namkeen</h3>
-
-                        <p>
-                            Delicious and crunchy snacks made for
-                            everyday enjoyment.
-                        </p>
-
-                        <a href="#namkeen-products">
-                            Explore Products
-                            <i class="bi bi-arrow-right"></i>
-                        </a>
+                        </div>
 
                     </div>
 
                 </div>
 
-            </div>
-
-
-            <!-- Sweets -->
-
-            <div class="col-lg-3 col-md-6">
-
-                <div class="category-card">
-
-                    <div class="category-image">
-
-                        <img src="{{ asset('uploads/products/sweets.jpg') }}"
-                             alt="Sweets">
-
-                        <div class="category-overlay"></div>
-
-                    </div>
-
-                    <div class="category-content">
-
-                        <span>03</span>
-
-                        <h3>Sweets</h3>
-
-                        <p>
-                            Traditional sweets crafted for retail
-                            and gifting requirements.
-                        </p>
-
-                        <a href="#sweets-products">
-                            Explore Products
-                            <i class="bi bi-arrow-right"></i>
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- Gift Packs -->
-
-            <div class="col-lg-3 col-md-6">
-
-                <div class="category-card">
-
-                    <div class="category-image">
-
-                        <img src="{{ asset('uploads/products/gift-pack.jpg') }}"
-                             alt="Gift Packs">
-
-                        <div class="category-overlay"></div>
-
-                    </div>
-
-                    <div class="category-content">
-
-                        <span>04</span>
-
-                        <h3>Gift Packs</h3>
-
-                        <p>
-                            Premium packaging solutions for festivals,
-                            gifting and corporate occasions.
-                        </p>
-
-                        <a href="#gift-products">
-                            Explore Products
-                            <i class="bi bi-arrow-right"></i>
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </div>
+            @endforeach
 
         </div>
 
@@ -189,321 +97,156 @@
 </section>
 
 
+
 <!-- =========================================
-     MAKHANA PRODUCTS
+     DYNAMIC PRODUCTS
 ========================================= -->
 
-<section class="product-list-section" id="makhana-products">
+@foreach ($categories as $category)
 
-    <div class="container">
+    @if ($category->products->count() > 0)
 
-        <div class="product-section-heading">
+        <section
+            class="product-list-section @if($loop->iteration % 2 == 0) alternate-section @endif"
+            id="{{ $category->slug }}-products"
+        >
 
-            <div>
-                <span class="section-tag">
-                    CATEGORY 01
-                </span>
-
-                <h2>
-                    Premium <span>Makhana</span>
-                </h2>
-            </div>
-
-            <p>
-                Our premium fox nuts are carefully selected and processed
-                to maintain quality, taste and crunch.
-            </p>
-
-        </div>
+            <div class="container">
 
 
-        <div class="row g-4">
+                <!-- Section Heading -->
+                <div class="product-section-heading">
 
+                    <div>
 
-            <!-- Product 1 -->
+                        <span class="section-tag">
+                             {{ strtoupper($category->name) }} 
+                        </span>
 
-            <div class="col-lg-4 col-md-6">
-
-                <div class="product-card">
-
-                    <div class="product-image">
-
-                        <img src="{{ asset('uploads/products/makhana-4-suta.jpg') }}"
-                             alt="4 Suta Makhana">
-
-                        <span class="product-badge">
+                        <h2>
                             Premium
-                        </span>
+                            <span>{{ $category->name }}</span>
+                        </h2>
 
                     </div>
 
-                    <div class="product-content">
 
-                        <span class="product-category">
-                            MAKHANA
-                        </span>
+                    <p>
+                        Explore our premium quality
+                        {{ strtolower($category->name) }}
+                        products carefully selected for retail,
+                        wholesale and business requirements.
+                    </p>
 
-                        <h3>4 Suta Makhana</h3>
+                </div>
 
-                        <p>
-                            Carefully selected premium fox nuts suitable
-                            for retail and bulk requirements.
-                        </p>
 
-                        <a href="{{ Auth::guard('customer')->check() ? route('product.details') : '#' }}"
-                            class="product-btn"
-                            @guest('customer')
-                                data-bs-toggle="modal"
-                                data-bs-target="#authChoiceModal"
-                            @endguest>
-                                View Details
-                                <i class="bi bi-arrow-right"></i>
-                        </a>
 
-                    </div>
+                <!-- Products -->
+                <div class="row g-4">
+
+                    @foreach ($category->products as $product)
+
+                        <div class="col-lg-4 col-md-6">
+
+                            <div class="product-card">
+
+
+                                <!-- Product Image -->
+                                <div class="product-image">
+
+                                    @if($product->main_image)
+
+                                        <img src="{{ asset('storage/' . $product->main_image) }}"
+                                             alt="{{ $product->name }}">
+
+                                    @else
+
+                                        <img src="{{ asset('uploads/products/allo-bhujia.jpg') }}"
+                                             alt="{{ $product->name }}">
+
+                                    @endif
+
+
+                                    <span class="product-badge">
+                                        Premium
+                                    </span>
+
+                                </div>
+
+
+
+                                <!-- Product Content -->
+                                <div class="product-content">
+
+
+                                    <span class="product-category">
+                                        {{ strtoupper($category->name) }}
+                                    </span>
+
+
+                                    <h3>
+                                        {{ $product->name }}
+                                    </h3>
+
+
+                                    <p>
+                                        {{ $product->description ?? 'Premium quality product suitable for retail and bulk requirements.' }}
+                                    </p>
+
+
+
+                                    <!-- Customer Authentication -->
+                                    @auth('customer')
+
+                                        <a href="{{ route('product.details', [
+                                                    'id' => $product->id,
+                                                    'slug' => $product->slug
+                                                ]) }}" class="product-btn">
+
+                                                    View Details
+
+                                                    <i class="bi bi-arrow-right"></i>
+
+                                                </a>
+                                    @else
+
+                                        <a href="#"
+                                           class="product-btn"
+                                           data-bs-toggle="modal"
+                                           data-bs-target="#authChoiceModal">
+
+                                            View Details
+
+                                            <i class="bi bi-arrow-right"></i>
+
+                                        </a>
+
+                                    @endauth
+
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    @endforeach
 
                 </div>
 
             </div>
 
+        </section>
 
-            <!-- Product 2 -->
+    @endif
 
-            <div class="col-lg-4 col-md-6">
+@endforeach
 
-                <div class="product-card">
-
-                    <div class="product-image">
-
-                        <img src="{{ asset('uploads/products/makhana-5-suta.jpg') }}"
-                             alt="5 Suta Makhana">
-
-                        <span class="product-badge">
-                            Best Seller
-                        </span>
-
-                    </div>
-
-                    <div class="product-content">
-
-                        <span class="product-category">
-                            MAKHANA
-                        </span>
-
-                        <h3>5 Suta Makhana</h3>
-
-                        <p>
-                            Uniform size, excellent crunch and premium
-                            quality for business requirements.
-                        </p>
-
-                        <a href="#" class="product-btn">
-                            View Details
-                            <i class="bi bi-arrow-right"></i>
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- Product 3 -->
-
-            <div class="col-lg-4 col-md-6">
-
-                <div class="product-card">
-
-                    <div class="product-image">
-
-                        <img src="{{ asset('uploads/products/makhana-6-suta.jpg') }}"
-                             alt="6 Suta Makhana">
-
-                        <span class="product-badge">
-                            Premium
-                        </span>
-
-                    </div>
-
-                    <div class="product-content">
-
-                        <span class="product-category">
-                            MAKHANA
-                        </span>
-
-                        <h3>6 Suta Makhana</h3>
-
-                        <p>
-                            Large-sized fox nuts ideal for premium retail
-                            and export requirements.
-                        </p>
-
-                        <a href="#" class="product-btn">
-                            View Details
-                            <i class="bi bi-arrow-right"></i>
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-        </div>
-
-    </div>
-
-</section>
 
 
 <!-- =========================================
-     NAMKEEN
-========================================= -->
-
-<section class="product-list-section alternate-section"
-         id="namkeen-products">
-
-    <div class="container">
-
-        <div class="product-section-heading">
-
-            <div>
-
-                <span class="section-tag">
-                    CATEGORY 02
-                </span>
-
-                <h2>
-                    Crunchy <span>Namkeen</span>
-                </h2>
-
-            </div>
-
-            <p>
-                A range of flavorful and crunchy namkeen products
-                suitable for retail and wholesale markets.
-            </p>
-
-        </div>
-
-
-        <div class="row g-4">
-
-            <div class="col-lg-4 col-md-6">
-
-                <div class="product-card">
-
-                    <div class="product-image">
-
-                        <img src="{{ asset('uploads/products/aloo-bhujia.jpg') }}"
-                             alt="Aloo Bhujia">
-
-                    </div>
-
-                    <div class="product-content">
-
-                        <span class="product-category">
-                            NAMKEEN
-                        </span>
-
-                        <h3>Aloo Bhujia</h3>
-
-                        <p>
-                            Classic crunchy snack with authentic flavour.
-                        </p>
-
-                        <a href="#" class="product-btn">
-                            View Details
-                            <i class="bi bi-arrow-right"></i>
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <div class="col-lg-4 col-md-6">
-
-                <div class="product-card">
-
-                    <div class="product-image">
-
-                        <img src="{{ asset('uploads/products/mix-namkeen.jpg') }}"
-                             alt="Mix Namkeen">
-
-                    </div>
-
-                    <div class="product-content">
-
-                        <span class="product-category">
-                            NAMKEEN
-                        </span>
-
-                        <h3>Mix Namkeen</h3>
-
-                        <p>
-                            A delicious combination of crunchy ingredients.
-                        </p>
-
-                        <a href="#" class="product-btn">
-                            View Details
-                            <i class="bi bi-arrow-right"></i>
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <div class="col-lg-4 col-md-6">
-
-                <div class="product-card">
-
-                    <div class="product-image">
-
-                        <img src="{{ asset('uploads/products/khatta-meetha.jpg') }}"
-                             alt="Khatta Meetha">
-
-                    </div>
-
-                    <div class="product-content">
-
-                        <span class="product-category">
-                            NAMKEEN
-                        </span>
-
-                        <h3>Khatta Meetha</h3>
-
-                        <p>
-                            Sweet and tangy flavour with a satisfying crunch.
-                        </p>
-
-                        <a href="#" class="product-btn">
-                            View Details
-                            <i class="bi bi-arrow-right"></i>
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================================
-     CTA
+     BUSINESS CTA
 ========================================= -->
 
 <section class="products-cta">
@@ -530,9 +273,14 @@
 
             </div>
 
-            <a href="{{ url('/buyer-inquiry') }}" class="cta-btn">
+
+            <a href="{{ url('/buyer-inquiry') }}"
+               class="cta-btn">
+
                 Send Inquiry
+
                 <i class="bi bi-arrow-right"></i>
+
             </a>
 
         </div>

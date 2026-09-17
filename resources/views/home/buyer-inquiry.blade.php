@@ -39,7 +39,7 @@
 
             <form
                 id="buyerInquiryForm"
-                action="#"
+                action="{{ route('buyer-inquiry.store') }}"
                 method="POST"
             >
 
@@ -152,7 +152,7 @@
                                 name="customer_name"
                                 class="form-control"
                                 placeholder="Enter your full name"
-                                value="{{ old('customer_name') }}"
+                                value="{{ old('customer_name', $customer->name ?? '') }}"
                                 autocomplete="name"
                             >
 
@@ -183,7 +183,7 @@
                                 name="company_name"
                                 class="form-control"
                                 placeholder="Enter company name"
-                                value="{{ old('company_name') }}"
+                                value="{{ old('company_name', $customer->company_name ?? '') }}"
                                 autocomplete="organization"
                             >
 
@@ -204,7 +204,7 @@
                                 for="email"
                                 class="form-label"
                             >
-                                Business Email
+                                Email
                                 <span class="required">*</span>
                             </label>
 
@@ -214,7 +214,7 @@
                                 name="email"
                                 class="form-control"
                                 placeholder="example@company.com"
-                                value="{{ old('email') }}"
+                                value="{{ old('email', $customer->email ?? '') }}"
                                 autocomplete="email"
                             >
 
@@ -245,9 +245,9 @@
                                 name="phone"
                                 class="form-control"
                                 placeholder="Enter phone number"
-                                value="{{ old('phone') }}"
+                                value="{{ old('phone', $customer->phone ?? '') }}"
                                 autocomplete="tel"
-                            >
+                                readonly>
 
                             <span
                                 class="error-message"
@@ -273,23 +273,21 @@
                             <select
                                 id="customer_type"
                                 name="customer_type"
-                                class="form-select"
-                            >
+                                class="form-select">
 
                                 <option value="">
                                     Select customer type
                                 </option>
 
-                                <option value="domestic">
+                                <option value="domestic" {{ old('customer_type', $customer->customer_type ?? '') == 'domestic' ? 'selected' : '' }}>
                                     Domestic
                                 </option>
 
-                                <option value="international">
+                                <option value="international" {{ old('customer_type', $customer->customer_type ?? '') == 'international' ? 'selected' : '' }}>
                                     International
                                 </option>
 
                             </select>
-
                             <span
                                 class="error-message"
                                 id="customer_type_error"
@@ -298,38 +296,6 @@
                             </span>
 
                         </div>
-
-
-                        {{-- Country --}}
-                        <div class="form-group">
-
-                            <label
-                                for="country"
-                                class="form-label"
-                            >
-                                Country
-                                <span class="required">*</span>
-                            </label>
-
-                            <input
-                                type="text"
-                                id="country"
-                                name="country"
-                                class="form-control"
-                                placeholder="Enter country"
-                                value="{{ old('country') }}"
-                                autocomplete="country-name"
-                            >
-
-                            <span
-                                class="error-message"
-                                id="country_error"
-                            >
-                                Please enter your country.
-                            </span>
-
-                        </div>
-
 
                         {{-- City --}}
                         <div class="form-group">
@@ -347,7 +313,7 @@
                                 name="city"
                                 class="form-control"
                                 placeholder="Enter city"
-                                value="{{ old('city') }}"
+                                value="{{ old('city', $customer->city ?? '') }}"
                                 autocomplete="address-level2"
                             >
 

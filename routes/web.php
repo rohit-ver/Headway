@@ -8,6 +8,11 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\InquiryController;
+use App\Http\Controllers\InquiryPdfController;
+
 
 
 
@@ -21,9 +26,18 @@ Route::get('/about', function () {
 })->name('about');
 
 
-Route::get('/products', function () {
-    return view('home.products');
-})->name('products');
+
+Route::get('/', [HomeController::class, 'index'])
+    ->name('home');
+
+Route::get('/products', [HomeController::class, 'category'])
+    ->name('products-categories');
+
+Route::get('/products', [HomeController::class, 'products'])
+    ->name('products');
+
+Route::get('/products/{id}/{slug}', [HomeController::class, 'productDetail'])
+    ->name('product.details');
 
 
 
@@ -31,19 +45,19 @@ Route::get('/contact', function () {
     return view('home.contact');
 })->name('contact');
 
-Route::get('/buyer-inquiry', function () {
+Route::get('/buyer-inquiry', [HomeController::class, 'buyerInquiry'])
+    ->middleware('auth:customer')
+    ->name('buyer.inquiry');
 
-    return view('home.buyer-inquiry');
+// routes/web.php
+Route::middleware('auth:customer')->group(function () {
+    Route::get('/buyer-inquiry', [InquiryController::class, 'create'])->name('buyer-inquiry');
+    Route::post('/buyer-inquiry', [InquiryController::class, 'store'])->name('buyer-inquiry.store');
+});
 
-})->name('buyer.inquiry');
-
-Route::get('/cart', function () {
-    return view('cart.index');
-})->name('cart');
-
-    Route::get('/customer/login', function () {
-        return view('components.login-model');
-    })->name('customer.login');
+Route::get('/customer/login', function () {
+    return view('components.login-model');
+})->name('customer.login');
 
 Route::get('/product-details', function () {
     return view('home.product-details');
@@ -91,14 +105,21 @@ Route::prefix('buyer')->group(function () {
     Route::get('/my-inquiries', function () {
         return view('buyer-dashboard.my-inquiries');
     })->name('buyer.my.inquiries');
-
 });
 
+// PDF and Excel export routes
+Route::get('/inquiries/export-pdf', [InquiryPdfController::class, 'exportPdf'])
+    ->name('inquiries.export.pdf')->middleware('auth');
 
+Route::get('/inquiries/export-excel', [InquiryPdfController::class, 'exportExcel'])
+    ->name('inquiries.export.excel')->middleware('auth');
+
+    // regidtration and login routes 
 Route::post('/otp/send', [RegistrationController::class, 'sendOtp'])->name('otp.send');
 Route::post('/otp/verify', [RegistrationController::class, 'verifyOtp'])->name('otp.verify');
 Route::post('/register', [RegistrationController::class, 'register'])->name('register.store');
-Route::post('/login', [LoginController::class, 'login'])->name('login');
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [LoginController::class, 'login']);
 
 Route::post('/logout', function (Request $request) {
     Auth::guard('customer')->logout();
@@ -127,3 +148,27 @@ Route::get('/all-products', function () {
 
 Route::post('/contact/store', [ContactController::class, 'store'])
     ->name('contact.store');
+
+    // Cart routes
+Route::middleware('auth:customer')->group(function () {
+
+    // Cart page
+    Route::get('/cart', [CartController::class, 'index'])
+        ->name('cart.index');
+
+    // Add product
+    Route::post('/cart/add/{product}', [CartController::class, 'add'])
+        ->name('cart.add');
+
+    // Update quantity
+    Route::patch('/cart/{cartItem}', [CartController::class, 'update'])
+        ->name('cart.update');
+
+    // Remove product
+    Route::delete('/cart/{cartItem}', [CartController::class, 'remove'])
+        ->name('cart.remove');
+
+    // Clear cart
+    Route::delete('/cart', [CartController::class, 'clear'])
+        ->name('cart.clear');
+});
