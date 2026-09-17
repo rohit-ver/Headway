@@ -20,11 +20,14 @@ COPY composer.json composer.lock ./
 
 RUN composer install \
     --no-dev \
+    --no-scripts \
     --optimize-autoloader \
     --no-interaction \
     --prefer-dist
 
 COPY . .
+
+RUN composer dump-autoload --optimize
 
 RUN php artisan config:clear
 RUN php artisan route:clear
