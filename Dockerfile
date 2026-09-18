@@ -1,4 +1,4 @@
-FROM php:8.2-cli
+FROM php:8.2-fpm
 
 RUN apt-get update && apt-get install -y \
     libicu-dev \
@@ -6,33 +6,17 @@ RUN apt-get update && apt-get install -y \
     libpng-dev \
     libonig-dev \
     zip \
-    unzip \
     git \
     curl \
     && docker-php-ext-install intl zip gd pdo pdo_mysql mbstring \
     && rm -rf /var/lib/apt/lists/*
 
-COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 WORKDIR /app
-
-COPY composer.json composer.lock ./
-
-RUN composer install \
-    --no-dev \
-    --no-scripts \
-    --optimize-autoloader \
-    --no-interaction \
-    --prefer-dist
-
 COPY . .
 
-RUN composer dump-autoload --optimize
-
-RUN php artisan config:clear
-RUN php artisan route:clear
-RUN php artisan view:clear
+RUN composer install --optimize-autoloader --no-dev --no-interaction --no-scripts
 
 EXPOSE 8000
-
-CMD ["sh", "-c", "php artisan serve --host=0.0.0.0 --port=${PORT:-8000}"]
+CMD php artisan package:discover --ansi && php artisan serve --host=0.0.0.0 --port=8000
