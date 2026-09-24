@@ -69,18 +69,31 @@
                             </p>
 
 
-                            <a href="#{{ $category->slug }}-products"
-                               class="hero-btn explore-products-btn"
-                               @guest('customer')
+                            @customerAuth
+
+                                <a href="#{{ $category->slug }}-products"
+                                   class="hero-btn explore-products-btn">
+
+                                    Explore Products
+
+                                    <i class="bi bi-arrow-right"></i>
+
+                                </a>
+
+                            @else
+
+                                <a href="javascript:void(0)"
+                                   class="hero-btn explore-products-btn"
                                    data-bs-toggle="modal"
-                                   data-bs-target="#authChoiceModal"
-                               @endguest>
+                                   data-bs-target="#authChoiceModal">
 
-                                Explore Products
+                                    Explore Products
 
-                                <i class="bi bi-arrow-right"></i>
+                                    <i class="bi bi-arrow-right"></i>
 
-                            </a>
+                                </a>
+
+                            @endcustomerAuth
 
                         </div>
 
@@ -120,7 +133,7 @@
                     <div>
 
                         <span class="section-tag">
-                             {{ strtoupper($category->name) }} 
+                            {{ strtoupper($category->name) }}
                         </span>
 
                         <h2>
@@ -179,7 +192,6 @@
                                 <!-- Product Content -->
                                 <div class="product-content">
 
-
                                     <span class="product-category">
                                         {{ strtoupper($category->name) }}
                                     </span>
@@ -197,21 +209,23 @@
 
 
                                     <!-- Customer Authentication -->
-                                    @auth('customer')
+                                    @customerAuth
 
                                         <a href="{{ route('product.details', [
                                                     'id' => $product->id,
                                                     'slug' => $product->slug
-                                                ]) }}" class="product-btn">
+                                                ]) }}"
+                                           class="product-btn">
 
-                                                    View Details
+                                            View Details
 
-                                                    <i class="bi bi-arrow-right"></i>
+                                            <i class="bi bi-arrow-right"></i>
 
-                                                </a>
+                                        </a>
+
                                     @else
 
-                                        <a href="#"
+                                        <a href="javascript:void(0)"
                                            class="product-btn"
                                            data-bs-toggle="modal"
                                            data-bs-target="#authChoiceModal">
@@ -222,7 +236,7 @@
 
                                         </a>
 
-                                    @endauth
+                                    @endcustomerAuth
 
 
                                 </div>
@@ -274,14 +288,30 @@
             </div>
 
 
-            <a href="{{ url('/buyer-inquiry') }}"
-               class="cta-btn">
+            @customerAuth
+                <a href="{{ url('/buyer-inquiry') }}"
+                   class="cta-btn">
 
-                Send Inquiry
+                    Send Inquiry
 
-                <i class="bi bi-arrow-right"></i>
+                    <i class="bi bi-arrow-right"></i>
 
-            </a>
+                </a>
+
+            @else
+
+                <a href="javascript:void(0)"
+                   class="cta-btn"
+                   data-bs-toggle="modal"
+                   data-bs-target="#authChoiceModal">
+
+                    Send Inquiry
+
+                    <i class="bi bi-arrow-right"></i>
+
+                </a>
+
+            @endcustomerAuth
 
         </div>
 

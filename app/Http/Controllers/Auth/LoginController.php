@@ -33,22 +33,22 @@ class LoginController extends Controller
         ], [
 
             'email.required' =>
-                'Please enter your email address.',
+            'Please enter your email address.',
 
             'email.email' =>
-                'Please enter a valid email address.',
+            'Please enter a valid email address.',
 
             'email.max' =>
-                'Email cannot exceed 150 characters.',
+            'Email cannot exceed 150 characters.',
 
             'password.required' =>
-                'Please enter your password.',
+            'Please enter your password.',
 
             'password.min' =>
-                'Password must be at least 6 characters.',
+            'Password must be at least 6 characters.',
 
             'password.max' =>
-                'Password cannot exceed 50 characters.',
+            'Password cannot exceed 50 characters.',
         ]);
 
 
@@ -101,8 +101,12 @@ class LoginController extends Controller
         return response()->json([
             'success' => false,
             'message' =>
-                'The email or password you entered is incorrect.',
+            'The email or password you entered is incorrect.',
         ], 401);
     }
-}
 
+    public function showLoginForm()
+    {
+        return view('auth.login'); // apni actual login blade view ka path yahan daaliye
+    }
+}

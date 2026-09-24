@@ -49,10 +49,13 @@
 
     @include('layouts.footer')
 
+    @include('components.auth-modal')
+    @include('components.login-modal')
+    @include('components.registration-modal')
+
 
     <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Main JS -->
     <script src="{{ asset('js/animation.js') }}"></script>
 

@@ -42,7 +42,7 @@ Route::get('/products/{id}/{slug}', [HomeController::class, 'productDetail'])
 
 
 Route::get('/contact', function () {
-    return view('home.contact');
+    return view('home.contact_inquiries');
 })->name('contact');
 
 Route::get('/buyer-inquiry', [HomeController::class, 'buyerInquiry'])
