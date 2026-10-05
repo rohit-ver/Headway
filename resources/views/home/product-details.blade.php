@@ -50,7 +50,7 @@
 
                         <img
                             id="mainProductImage"
-                            src="{{ asset('storage/' . $product->main_image) }}"
+                            src="{{ asset('uploads/' . $product->main_image) }}"
                             alt="{{ $product->name }}"
                             onerror="this.onerror=null; this.src='{{ asset('images/no-image.png') }}';"
                         >
@@ -88,12 +88,12 @@
                                 class="product-thumb active"
                                 onclick="changeProductImage(
                                     this,
-                                    '{{ asset('storage/' . $product->main_image) }}'
+                                    '{{ asset('uploads/' . $product->main_image) }}'
                                 )"
                             >
 
                                 <img
-                                    src="{{ asset('storage/' . $product->main_image) }}"
+                                    src="{{ asset('uploads/' . $product->main_image) }}"
                                     alt="{{ $product->name }}"
                                     onerror="this.onerror=null; this.src='{{ asset('images/no-image.png') }}';"
                                 >
@@ -110,12 +110,12 @@
                                 class="product-thumb"
                                 onclick="changeProductImage(
                                     this,
-                                    '{{ asset('storage/' . $variantImage->image_path) }}'
+                                    '{{ asset('uploads/' . $variantImage->image_path) }}'
                                 )"
                             >
 
                                 <img
-                                    src="{{ asset('storage/' . $variantImage->image_path) }}"
+                                    src="{{ asset('uploads/' . $variantImage->image_path) }}"
                                     alt="{{ $variantImage->color ?? $product->name }}"
                                     onerror="this.onerror=null; this.src='{{ asset('images/no-image.png') }}';"
                                 >
@@ -526,7 +526,7 @@
                         @if($relatedProduct->main_image)
 
                             <img
-                                src="{{ asset('storage/' . $relatedProduct->main_image) }}"
+                                src="{{ asset('uploads/' . $relatedProduct->main_image) }}"
                                 alt="{{ $relatedProduct->name }}"
                                 onerror="this.onerror=null; this.src='{{ asset('images/no-image.png') }}';"
                             >

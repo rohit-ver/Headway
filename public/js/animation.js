@@ -171,11 +171,11 @@ document.addEventListener("DOMContentLoaded", function () {
             // Agar already full URL hai (http/https) to as-is use karo
             if (
                 imagePath.startsWith("http") ||
-                imagePath.startsWith("/storage")
+                imagePath.startsWith("/uploads")
             ) {
                 finalImage = imagePath;
             } else {
-                finalImage = "/storage/" + imagePath.replace(/^\/+/, "");
+                finalImage = "/uploads/" + imagePath.replace(/^\/+/, "");
             }
         }
 

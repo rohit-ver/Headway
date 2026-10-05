@@ -17,6 +17,7 @@ use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
+use App\Http\Middleware\AdminIdleTimeout;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -33,6 +34,7 @@ class AdminPanelProvider extends PanelProvider
                 'primary' => Color::Amber,
             ])
             ->brandName('Headway')
+            ->favicon(asset('images/Headway-logo.png'))
             ->brandLogo(asset('images/Headway-logo.png'))
             ->brandLogoHeight('3rem')
             ->darkMode(false)
@@ -61,6 +63,7 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->authMiddleware([
                 Authenticate::class,
-            ]);
+                AdminIdleTimeout::class,
+            ], isPersistent: true);
     }
 }

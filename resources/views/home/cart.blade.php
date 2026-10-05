@@ -21,9 +21,10 @@
                     YOUR SELECTION
                 </span>
 
-                <h1>
-                    Inquiry <span>Cart</span>
-                </h1>
+                <div class="heading-ornament">
+                    <h2 class="section-title title-green">Inquiry Cart</h2>
+                    <img src="{{ asset('images/divider.png') }}" alt="" class="heading-divider">
+                </div>
 
                 <p>
                     Review your selected products before sending your
@@ -57,7 +58,7 @@
 
                                 @if($item->product && $item->product->main_image)
                                     <img
-                                        src="{{ asset('storage/' . $item->product->main_image) }}"
+                                        src="{{ asset('uploads/' . $item->product->main_image) }}"
                                         alt="{{ $item->product->name }}"
                                         onerror="this.onerror=null; this.src='{{ asset('images/no-image.png') }}';"
                                     >
@@ -188,11 +189,12 @@
 
                 <div class="hw-cart-summary">
 
-                    <span class="hw-summary-tag">
-                        INQUIRY SUMMARY
-                    </span>
+                    <div class="heading-ornament">
+                        <h2 class="section-title title-green">INQUIRY SUMMARY</h2>
+                        <img src="{{ asset('images/divider.png') }}" alt="" class="heading-divider">
+                    </div>
 
-                    <h2>
+                    <h2 style="text-align: center;" >
                         Your <span>Selection</span>
                     </h2>
 

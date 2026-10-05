@@ -128,22 +128,22 @@
                                 </div>
 
 
-                                <a href="#" class="user-dropdown-item">
+                                <a href="{{route('buyer.profile')}}" class="user-dropdown-item">
                                     <i class="bi bi-person"></i>
                                     My Profile
                                 </a>
 
-                                <a href="#" class="user-dropdown-item">
+                                <a href="{{route('buyer.orders')}}" class="user-dropdown-item">
                                     <i class="bi bi-box-seam"></i>
                                     My Orders
                                 </a>
 
-                                <a href="#" class="user-dropdown-item">
+                                <a href="{{route('buyer.my.inquiries')}}" class="user-dropdown-item">
                                     <i class="bi bi-cart3"></i>
                                     Inquiry Cart
                                 </a>
 
-                                <a href="#" class="user-dropdown-item">
+                                <a href="{{route('buyer.my.inquiries')}}" class="user-dropdown-item">
                                     <i class="bi bi-chat-left-text"></i>
                                     My Inquiries
                                 </a>

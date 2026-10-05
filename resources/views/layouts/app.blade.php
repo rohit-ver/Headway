@@ -33,6 +33,7 @@
     <link rel="stylesheet" href="{{ asset('css/auth-modal.css') }}">
 
     @stack('styles')
+    <link rel="stylesheet" href="{{ asset('css/fonts.css') }}">
 </head>
 <script>
   window.isUserLoggedIn = @json(auth('customer')->check());

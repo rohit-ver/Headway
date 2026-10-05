@@ -18,7 +18,7 @@ class AboutPageResource extends Resource
 {
     protected static ?string $model = AboutPage::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedInformationCircle;
 
     protected static ?string $recordTitleAttribute = 'hero_title';
 

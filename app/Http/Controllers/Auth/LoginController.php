@@ -107,6 +107,6 @@ class LoginController extends Controller
 
     public function showLoginForm()
     {
-        return view('auth.login'); // apni actual login blade view ka path yahan daaliye
+        return redirect('/')->with('open_login', true);
     }
 }

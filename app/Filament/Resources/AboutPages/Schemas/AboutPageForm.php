@@ -64,7 +64,7 @@ class AboutPageForm
                                 '4:3',
                                 '1:1',
                             ])
-                            ->disk('public')
+                            ->disk('uploads')
                             ->directory('about')
                             ->visibility('public')
                             ->maxSize(5120)
@@ -123,7 +123,7 @@ class AboutPageForm
                                 '4:3',
                                 '1:1',
                             ])
-                            ->disk('public')
+                            ->disk('uploads')
                             ->directory('about')
                             ->visibility('public')
                             ->maxSize(5120)

@@ -4,6 +4,16 @@
 
 @section('content')
 
+@php
+    // status ke hisaab se class aur icon
+    $statusMeta = [
+        'pending'   => ['label' => 'Pending',   'icon' => 'bi-clock'],
+        'replied'   => ['label' => 'Replied',   'icon' => 'bi-chat-left-text'],
+        'completed' => ['label' => 'Completed', 'icon' => 'bi-check-circle'],
+    ];
+    $pad = fn ($n) => str_pad($n, 2, '0', STR_PAD_LEFT);
+@endphp
+
 <div class="buyer-page-wrapper">
 
     {{-- =========================================
@@ -35,80 +45,57 @@
 
 
     {{-- =========================================
-         INQUIRY SUMMARY
+         INQUIRY SUMMARY (dynamic)
     ========================================== --}}
 
     <div class="row g-4 inquiry-summary">
 
         <div class="col-xl-3 col-md-6">
-
             <div class="inquiry-stat-card">
-
                 <div class="inquiry-stat-icon">
                     <i class="bi bi-send"></i>
                 </div>
-
                 <div>
                     <span>Total Inquiries</span>
-                    <strong>12</strong>
+                    <strong>{{ $pad($stats['total']) }}</strong>
                 </div>
-
             </div>
-
         </div>
 
-
         <div class="col-xl-3 col-md-6">
-
             <div class="inquiry-stat-card">
-
                 <div class="inquiry-stat-icon pending">
                     <i class="bi bi-clock"></i>
                 </div>
-
                 <div>
                     <span>Pending</span>
-                    <strong>04</strong>
+                    <strong>{{ $pad($stats['pending']) }}</strong>
                 </div>
-
             </div>
-
         </div>
 
-
         <div class="col-xl-3 col-md-6">
-
             <div class="inquiry-stat-card">
-
                 <div class="inquiry-stat-icon replied">
                     <i class="bi bi-chat-left-text"></i>
                 </div>
-
                 <div>
                     <span>Replied</span>
-                    <strong>05</strong>
+                    <strong>{{ $pad($stats['replied']) }}</strong>
                 </div>
-
             </div>
-
         </div>
 
-
         <div class="col-xl-3 col-md-6">
-
             <div class="inquiry-stat-card">
-
                 <div class="inquiry-stat-icon completed">
                     <i class="bi bi-check-circle"></i>
                 </div>
-
                 <div>
                     <span>Completed</span>
-                    <strong>03</strong>
+                    <strong>{{ $pad($stats['completed']) }}</strong>
                 </div>
-
             </div>
-
         </div>
 
     </div>
@@ -121,45 +108,26 @@
     <div class="inquiry-toolbar">
 
         <div class="inquiry-search">
-
             <i class="bi bi-search"></i>
-
             <input type="text"
                    id="inquirySearch"
                    placeholder="Search inquiries...">
-
         </div>
 
-
         <div class="inquiry-filter">
-
             <select id="inquiryStatus">
-
-                <option value="all">
-                    All Status
-                </option>
-
-                <option value="pending">
-                    Pending
-                </option>
-
-                <option value="replied">
-                    Replied
-                </option>
-
-                <option value="completed">
-                    Completed
-                </option>
-
+                <option value="all">All Status</option>
+                <option value="pending">Pending</option>
+                <option value="replied">Replied</option>
+                <option value="completed">Completed</option>
             </select>
-
         </div>
 
     </div>
 
 
     {{-- =========================================
-         INQUIRY TABLE
+         INQUIRY TABLE (dynamic)
     ========================================== --}}
 
     <div class="buyer-table-card">
@@ -167,19 +135,12 @@
         <div class="buyer-table-header">
 
             <div>
-
-                <h3>
-                    Inquiry History
-                </h3>
-
-                <p>
-                    Your recent product inquiries
-                </p>
-
+                <h3>Inquiry History</h3>
+                <p>Your recent product inquiries</p>
             </div>
 
             <span class="inquiry-count">
-                12 Inquiries
+                {{ $stats['total'] }} {{ \Illuminate\Support\Str::plural('Inquiry', $stats['total']) }}
             </span>
 
         </div>
@@ -190,348 +151,107 @@
             <table class="buyer-inquiry-table">
 
                 <thead>
-
                     <tr>
-
-                        <th>
-                            Inquiry ID
-                        </th>
-
-                        <th>
-                            Product
-                        </th>
-
-                        <th>
-                            Quantity
-                        </th>
-
-                        <th>
-                            Date
-                        </th>
-
-                        <th>
-                            Status
-                        </th>
-
-                        <th>
-                            Action
-                        </th>
-
+                        <th>Inquiry ID</th>
+                        <th>Product</th>
+                        <th>Quantity</th>
+                        <th>Date</th>
+                        <th>Status</th>
+                        <th>Action</th>
                     </tr>
-
                 </thead>
 
 
                 <tbody id="inquiryTableBody">
 
+                    @foreach ($inquiries as $inquiry)
 
-                    {{-- INQUIRY 1 --}}
+                        @php
+                            $status = strtolower($inquiry->status ?? 'pending');
+                            if (! isset($statusMeta[$status])) {
+                                $status = 'pending';
+                            }
 
-                    <tr data-status="replied">
+                            $items      = $inquiry->items;
+                            $firstItem  = $items->first();
+                            $product    = optional($firstItem)->product;
+                            $moreCount  = max($items->count() - 1, 0);
 
-                        <td>
+                            $image = $product && $product->main_image
+                                ? asset('uploads/' . $product->main_image)
+                                : asset('images/no-image.png');
+                        @endphp
 
-                            <span class="inquiry-id">
-                                #INQ-1024
-                            </span>
+                        <tr data-status="{{ $status }}">
 
-                        </td>
-
-
-                        <td>
-
-                            <div class="inquiry-product">
-
-                                <div class="inquiry-product-image">
-
-                                    <img src="{{ asset('uploads/products/makhana-5-suta.jpg') }}"
-                                         alt="5 Suta Makhana">
-
-                                </div>
-
-                                <div>
-
-                                    <strong>
-                                        5 Suta Makhana
-                                    </strong>
-
-                                    <span>
-                                        Premium Makhana
-                                    </span>
-
-                                </div>
-
-                            </div>
-
-                        </td>
+                            <td>
+                                <span class="inquiry-id">
+                                    #INQ-{{ $inquiry->id }}
+                                </span>
+                            </td>
 
 
-                        <td>
-                            500 KG
-                        </td>
+                            <td>
+                                <div class="inquiry-product">
 
+                                    <div class="inquiry-product-image">
+                                        <img src="{{ $image }}"
+                                             alt="{{ $product->name ?? 'Product' }}">
+                                    </div>
 
-                        <td>
-                            12 Aug 2026
-                        </td>
+                                    <div>
+                                        <strong>
+                                            {{ $product->name ?? 'Product removed' }}
+                                        </strong>
 
-
-                        <td>
-
-                            <span class="inquiry-status replied">
-                                <i class="bi bi-chat-left-text"></i>
-                                Replied
-                            </span>
-
-                        </td>
-
-
-                        <td>
-
-                            <a href="#"
-                               class="inquiry-view-btn">
-
-                                View
-                                <i class="bi bi-arrow-right"></i>
-
-                            </a>
-
-                        </td>
-
-                    </tr>
-
-
-
-                    {{-- INQUIRY 2 --}}
-
-                    <tr data-status="pending">
-
-                        <td>
-
-                            <span class="inquiry-id">
-                                #INQ-1023
-                            </span>
-
-                        </td>
-
-
-                        <td>
-
-                            <div class="inquiry-product">
-
-                                <div class="inquiry-product-image">
-
-                                    <img src="{{ asset('uploads/products/makhana-6-suta.jpg') }}"
-                                         alt="6 Suta Makhana">
+                                        <span>
+                                            @if ($moreCount > 0)
+                                                +{{ $moreCount }} more {{ \Illuminate\Support\Str::plural('product', $moreCount) }}
+                                            @else
+                                                {{ optional($product->category ?? null)->name }}
+                                            @endif
+                                        </span>
+                                    </div>
 
                                 </div>
+                            </td>
 
-                                <div>
 
-                                    <strong>
-                                        6 Suta Makhana
-                                    </strong>
+                            <td>
+                                @if ($items->count() > 1)
+                                    {{ $items->count() }} items
+                                @elseif ($firstItem)
+                                    {{ $firstItem->quantity }} {{ $firstItem->unit ?? '' }}
+                                @else
+                                    -
+                                @endif
+                            </td>
 
-                                    <span>
-                                        Premium Makhana
-                                    </span>
 
-                                </div>
+                            <td>
+                                {{ $inquiry->created_at->format('d M Y') }}
+                            </td>
 
-                            </div>
 
-                        </td>
+                            <td>
+                                <span class="inquiry-status {{ $status }}">
+                                    <i class="bi {{ $statusMeta[$status]['icon'] }}"></i>
+                                    {{ $statusMeta[$status]['label'] }}
+                                </span>
+                            </td>
 
 
-                        <td>
-                            1000 KG
-                        </td>
+                            <td>
+                                <a href="#"
+                                   class="inquiry-view-btn">
+                                    View
+                                    <i class="bi bi-arrow-right"></i>
+                                </a>
+                            </td>
 
+                        </tr>
 
-                        <td>
-                            10 Aug 2026
-                        </td>
-
-
-                        <td>
-
-                            <span class="inquiry-status pending">
-                                <i class="bi bi-clock"></i>
-                                Pending
-                            </span>
-
-                        </td>
-
-
-                        <td>
-
-                            <a href="#"
-                               class="inquiry-view-btn">
-
-                                View
-                                <i class="bi bi-arrow-right"></i>
-
-                            </a>
-
-                        </td>
-
-                    </tr>
-
-
-
-                    {{-- INQUIRY 3 --}}
-
-                    <tr data-status="completed">
-
-                        <td>
-
-                            <span class="inquiry-id">
-                                #INQ-1022
-                            </span>
-
-                        </td>
-
-
-                        <td>
-
-                            <div class="inquiry-product">
-
-                                <div class="inquiry-product-image">
-
-                                    <img src="{{ asset('uploads/products/aloo-bhujia.jpg') }}"
-                                         alt="Aloo Bhujia">
-
-                                </div>
-
-                                <div>
-
-                                    <strong>
-                                        Aloo Bhujia
-                                    </strong>
-
-                                    <span>
-                                        Namkeen
-                                    </span>
-
-                                </div>
-
-                            </div>
-
-                        </td>
-
-
-                        <td>
-                            250 KG
-                        </td>
-
-
-                        <td>
-                            06 Aug 2026
-                        </td>
-
-
-                        <td>
-
-                            <span class="inquiry-status completed">
-                                <i class="bi bi-check-circle"></i>
-                                Completed
-                            </span>
-
-                        </td>
-
-
-                        <td>
-
-                            <a href="#"
-                               class="inquiry-view-btn">
-
-                                View
-                                <i class="bi bi-arrow-right"></i>
-
-                            </a>
-
-                        </td>
-
-                    </tr>
-
-
-
-                    {{-- INQUIRY 4 --}}
-
-                    <tr data-status="pending">
-
-                        <td>
-
-                            <span class="inquiry-id">
-                                #INQ-1021
-                            </span>
-
-                        </td>
-
-
-                        <td>
-
-                            <div class="inquiry-product">
-
-                                <div class="inquiry-product-image">
-
-                                    <img src="{{ asset('uploads/products/mix-namkeen.jpg') }}"
-                                         alt="Mix Namkeen">
-
-                                </div>
-
-                                <div>
-
-                                    <strong>
-                                        Mix Namkeen
-                                    </strong>
-
-                                    <span>
-                                        Namkeen
-                                    </span>
-
-                                </div>
-
-                            </div>
-
-                        </td>
-
-
-                        <td>
-                            300 KG
-                        </td>
-
-
-                        <td>
-                            04 Aug 2026
-                        </td>
-
-
-                        <td>
-
-                            <span class="inquiry-status pending">
-                                <i class="bi bi-clock"></i>
-                                Pending
-                            </span>
-
-                        </td>
-
-
-                        <td>
-
-                            <a href="#"
-                               class="inquiry-view-btn">
-
-                                View
-                                <i class="bi bi-arrow-right"></i>
-
-                            </a>
-
-                        </td>
-
-                    </tr>
-
-
+                    @endforeach
 
                 </tbody>
 
@@ -540,21 +260,22 @@
         </div>
 
 
-        {{-- EMPTY RESULT --}}
-
+        {{-- EMPTY RESULT (search/filter ke baad) --}}
         <div class="inquiry-empty"
              id="inquiryEmpty"
-             style="display:none;">
+             style="display: {{ $inquiries->isEmpty() ? 'block' : 'none' }};">
 
             <i class="bi bi-search"></i>
 
-            <h4>
-                No inquiries found
-            </h4>
-
-            <p>
-                Try changing your search or filter.
-            </p>
+            @if ($inquiries->isEmpty())
+                <h4>No inquiries yet</h4>
+                <p>
+                    Browse our products and send your first inquiry.
+                </p>
+            @else
+                <h4>No inquiries found</h4>
+                <p>Try changing your search or filter.</p>
+            @endif
 
         </div>
 
@@ -574,27 +295,19 @@
             </div>
 
             <div>
-
-                <h3>
-                    Need help with an inquiry?
-                </h3>
-
+                <h3>Need help with an inquiry?</h3>
                 <p>
                     Our business team is ready to help you with pricing,
                     quantities and product requirements.
                 </p>
-
             </div>
 
         </div>
 
-
         <a href="{{ url('/contact') }}"
            class="buyer-outline-btn">
-
             Contact Team
             <i class="bi bi-arrow-right"></i>
-
         </a>
 
     </div>
@@ -610,78 +323,40 @@
 
 document.addEventListener('DOMContentLoaded', function () {
 
-    const searchInput = document.getElementById('inquirySearch');
+    const searchInput  = document.getElementById('inquirySearch');
     const statusFilter = document.getElementById('inquiryStatus');
-    const rows = document.querySelectorAll('#inquiryTableBody tr');
-    const emptyState = document.getElementById('inquiryEmpty');
-
+    const rows         = document.querySelectorAll('#inquiryTableBody tr');
+    const emptyState   = document.getElementById('inquiryEmpty');
 
     function filterInquiries() {
 
-        const searchValue =
-            searchInput.value.toLowerCase().trim();
-
-        const statusValue =
-            statusFilter.value;
+        const searchValue = searchInput.value.toLowerCase().trim();
+        const statusValue = statusFilter.value;
 
         let visibleCount = 0;
 
-
         rows.forEach(function (row) {
 
-            const rowText =
-                row.innerText.toLowerCase();
-
-            const rowStatus =
-                row.dataset.status;
-
-
-            const matchesSearch =
-                rowText.includes(searchValue);
-
-            const matchesStatus =
-                statusValue === 'all' ||
-                rowStatus === statusValue;
-
+            const matchesSearch = row.innerText.toLowerCase().includes(searchValue);
+            const matchesStatus = statusValue === 'all' || row.dataset.status === statusValue;
 
             if (matchesSearch && matchesStatus) {
-
                 row.style.display = '';
-
                 visibleCount++;
-
             } else {
-
                 row.style.display = 'none';
-
             }
 
         });
 
-
-        if (visibleCount === 0) {
-
-            emptyState.style.display = 'block';
-
-        } else {
-
-            emptyState.style.display = 'none';
-
+        // rows hain par filter ne sab chhupa diye ho tab hi message dikhao
+        if (rows.length > 0) {
+            emptyState.style.display = visibleCount === 0 ? 'block' : 'none';
         }
-
     }
 
-
-    searchInput.addEventListener(
-        'input',
-        filterInquiries
-    );
-
-
-    statusFilter.addEventListener(
-        'change',
-        filterInquiries
-    );
+    searchInput.addEventListener('input', filterInquiries);
+    statusFilter.addEventListener('change', filterInquiries);
 
 });
 

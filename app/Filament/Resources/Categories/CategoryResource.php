@@ -33,7 +33,7 @@ class CategoryResource extends Resource
     */
 
     protected static string|BackedEnum|null $navigationIcon =
-        Heroicon::OutlinedRectangleStack;
+    Heroicon::OutlinedSquares2x2;
 
     /*
     |--------------------------------------------------------------------------
@@ -60,7 +60,7 @@ class CategoryResource extends Resource
                 // Category Image
                 ImageColumn::make('image')
                     ->label('Image')
-                    ->disk('public')
+                    ->disk('uploads')
                     ->square()
                     ->size(55),
 
@@ -83,7 +83,7 @@ class CategoryResource extends Resource
                 ToggleColumn::make('status')
                     ->label('Status')
                     ->getStateUsing(
-                        fn ($record) => $record->status === 'active'
+                        fn($record) => $record->status === 'active'
                     )
                     ->updateStateUsing(
                         function ($record, $state) {
@@ -181,3 +181,4 @@ class CategoryResource extends Resource
         ];
     }
 }
+

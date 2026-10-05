@@ -21,14 +21,16 @@ class AboutPagesTable
                     ->searchable(),
                 TextColumn::make('hero_highlight')
                     ->searchable(),
-                ImageColumn::make('hero_image'),
+                ImageColumn::make('hero_image')
+                    ->disk('uploads'),
                 TextColumn::make('vision_tag')
                     ->searchable(),
                 TextColumn::make('vision_title')
                     ->searchable(),
                 TextColumn::make('vision_highlight')
                     ->searchable(),
-                ImageColumn::make('vision_image'),
+                ImageColumn::make('vision_image')
+                    ->disk('uploads'),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

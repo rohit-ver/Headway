@@ -12,6 +12,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\InquiryController;
 use App\Http\Controllers\InquiryPdfController;
+use App\Http\Controllers\AboutController;
 
 
 
@@ -78,21 +79,21 @@ Route::get('/contact_inquiries', function () {
 Route::prefix('buyer')->group(function () {
 
     // Dashboard
-    Route::get('/dashboard', function () {
-        return view('buyer-dashboard.profile');
-    })->name('buyer.dashboard');
+    Route::get('/dashboard', [\App\Http\Controllers\HomeController::class, 'profile'])
+        ->name('buyer.dashboard');
 
 
     // My Profile
-    Route::get('/profile', function () {
-        return view('buyer-dashboard.profile');
-    })->name('buyer.profile');
+    Route::get('/profile', [\App\Http\Controllers\HomeController::class, 'profile'])
+        ->name('buyer.profile');
+
+    Route::post('/profile', [\App\Http\Controllers\HomeController::class, 'updateProfile'])
+        ->name('buyer.profile.update');
 
 
     // My Orders
-    Route::get('/orders', function () {
-        return view('buyer-dashboard.orders');
-    })->name('buyer.orders');
+    Route::get('/orders', [\App\Http\Controllers\HomeController::class, 'myOrders'])
+        ->name('buyer.orders');
 
 
     // Inquiry Cart
@@ -102,9 +103,8 @@ Route::prefix('buyer')->group(function () {
 
 
     // My Inquiries
-    Route::get('/my-inquiries', function () {
-        return view('buyer-dashboard.my-inquiries');
-    })->name('buyer.my.inquiries');
+    Route::get('/my-inquiries', [\App\Http\Controllers\HomeController::class, 'myInquiries'])
+        ->name('buyer.my.inquiries');
 });
 
 // PDF and Excel export routes
@@ -172,3 +172,6 @@ Route::middleware('auth:customer')->group(function () {
     Route::delete('/cart', [CartController::class, 'clear'])
         ->name('cart.clear');
 });
+
+// About page route
+Route::get('/about', [AboutController::class, 'index'])->name('about');

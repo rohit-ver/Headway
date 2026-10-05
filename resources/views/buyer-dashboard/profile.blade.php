@@ -4,6 +4,25 @@
 
 @section('content')
 
+@php
+    // Phone: country code + number
+    $countryCode = $customer->country_code
+        ? '+' . ltrim($customer->country_code, '+')
+        : '';
+    $fullPhone = trim($countryCode . ' ' . ($customer->phone ?? ''));
+
+    // Customer type
+    $isInternational = ($customer->customer_type ?? '') === 'international';
+    $customerTypeLabel = $isInternational ? 'International Buyer' : 'Domestic Buyer';
+
+    // Country: table me column ho to wahi, warna customer type se
+    $country = $customer->country
+        ?? ($customer->customer_type ? ($isInternational ? 'International' : 'India') : null);
+
+    $businessTypes = ['Wholesaler', 'Distributor', 'Retailer', 'Importer', 'Exporter'];
+    $dash = '—';
+@endphp
+
 <!-- =========================================================
      PROFILE PAGE
 ========================================================= -->
@@ -31,6 +50,25 @@
 </div>
 
 
+{{-- Success message --}}
+@if (session('success'))
+    <div class="alert alert-success" role="alert">
+        {{ session('success') }}
+    </div>
+@endif
+
+{{-- Validation errors --}}
+@if ($errors->any())
+    <div class="alert alert-danger" role="alert">
+        <ul class="mb-0">
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
+
 <!-- =========================================================
      PROFILE OVERVIEW
 ========================================================= -->
@@ -49,7 +87,7 @@
         </span>
 
         <h2>
-            User Name
+            {{ $customer->name }}
         </h2>
 
         <p>
@@ -58,7 +96,7 @@
 
         <small>
             <i class="bi bi-envelope"></i>
-            business@example.com
+            {{ $customer->email ?? $dash }}
         </small>
 
     </div>
@@ -109,7 +147,7 @@
             </label>
 
             <div class="profile-info-value">
-                User Name
+                {{ $customer->name ?: $dash }}
             </div>
 
         </div>
@@ -122,7 +160,7 @@
             </label>
 
             <div class="profile-info-value">
-                business@example.com
+                {{ $customer->email ?: $dash }}
             </div>
 
         </div>
@@ -135,7 +173,7 @@
             </label>
 
             <div class="profile-info-value">
-                +91 98765 43210
+                {{ $fullPhone ?: $dash }}
             </div>
 
         </div>
@@ -149,10 +187,14 @@
 
             <div class="profile-info-value">
 
-                <span class="customer-type-badge">
-                    <i class="bi bi-building"></i>
-                    Domestic Buyer
-                </span>
+                @if ($customer->customer_type)
+                    <span class="customer-type-badge">
+                        <i class="bi bi-building"></i>
+                        {{ $customerTypeLabel }}
+                    </span>
+                @else
+                    {{ $dash }}
+                @endif
 
             </div>
 
@@ -197,7 +239,7 @@
             </label>
 
             <div class="profile-info-value">
-                ABC Foods Pvt. Ltd.
+                {{ $customer->company_name ?: $dash }}
             </div>
 
         </div>
@@ -210,7 +252,7 @@
             </label>
 
             <div class="profile-info-value">
-                Wholesaler
+                {{ $customer->business_type ?: $dash }}
             </div>
 
         </div>
@@ -223,7 +265,7 @@
             </label>
 
             <div class="profile-info-value">
-                Jaipur
+                {{ $customer->city ?: $dash }}
             </div>
 
         </div>
@@ -236,7 +278,7 @@
             </label>
 
             <div class="profile-info-value">
-                India
+                {{ $country ?: $dash }}
             </div>
 
         </div>
@@ -361,7 +403,7 @@
     </div>
 
 
-    <form action="#" method="POST">
+    <form action="{{ route('buyer.profile.update') }}" method="POST">
 
         @csrf
 
@@ -374,8 +416,10 @@
                 </label>
 
                 <input type="text"
+                       name="name"
                        class="profile-form-input"
-                       value="User Name">
+                       value="{{ old('name', $customer->name) }}"
+                       required>
 
             </div>
 
@@ -387,8 +431,10 @@
                 </label>
 
                 <input type="email"
+                       name="email"
                        class="profile-form-input"
-                       value="business@example.com">
+                       value="{{ old('email', $customer->email) }}"
+                       required>
 
             </div>
 
@@ -399,9 +445,11 @@
                     Phone Number
                 </label>
 
+                {{-- Phone OTP se verify hota hai, isliye yahan se change nahi hoga --}}
                 <input type="tel"
                        class="profile-form-input"
-                       value="+91 98765 43210">
+                       value="{{ $fullPhone }}"
+                       readonly>
 
             </div>
 
@@ -413,8 +461,9 @@
                 </label>
 
                 <input type="text"
+                       name="company_name"
                        class="profile-form-input"
-                       value="ABC Foods Pvt. Ltd.">
+                       value="{{ old('company_name', $customer->company_name) }}">
 
             </div>
 
@@ -425,27 +474,18 @@
                     Business Type
                 </label>
 
-                <select class="profile-form-input">
+                <select name="business_type" class="profile-form-input">
 
-                    <option>
-                        Wholesaler
+                    <option value="">
+                        Select business type
                     </option>
 
-                    <option>
-                        Distributor
-                    </option>
-
-                    <option>
-                        Retailer
-                    </option>
-
-                    <option>
-                        Importer
-                    </option>
-
-                    <option>
-                        Exporter
-                    </option>
+                    @foreach ($businessTypes as $type)
+                        <option value="{{ $type }}"
+                            {{ old('business_type', $customer->business_type) === $type ? 'selected' : '' }}>
+                            {{ $type }}
+                        </option>
+                    @endforeach
 
                 </select>
 
@@ -459,8 +499,9 @@
                 </label>
 
                 <input type="text"
+                       name="city"
                        class="profile-form-input"
-                       value="Jaipur">
+                       value="{{ old('city', $customer->city) }}">
 
             </div>
 
@@ -493,5 +534,21 @@
     </form>
 
 </div>
+
+@endsection
+
+
+@section('scripts')
+
+@if ($errors->any())
+<script>
+    // Validation error aaye to edit form khula rakho
+    document.addEventListener('DOMContentLoaded', function () {
+        if (typeof toggleProfileEdit === 'function') {
+            toggleProfileEdit();
+        }
+    });
+</script>
+@endif
 
 @endsection

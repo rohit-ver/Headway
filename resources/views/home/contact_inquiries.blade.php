@@ -48,13 +48,13 @@
 
         <div class="section-heading text-center">
 
-            <span class="section-tag">
-                CONTACT HEADWAYSTRATA
-            </span>
+            <div class="heading-ornament">
+                <h2 class="section-title title-green">Contact Headway</h2>
+                <img src="{{ asset('images/divider.png') }}" alt="" class="heading-divider">
+            </div>
 
             <h2 class="section-title">
-                We're Here To
-                <span>Help</span>
+                We're Here To Help
             </h2>
 
             <p class="section-description">
@@ -276,10 +276,10 @@
 
                     <div class="form-card-heading">
 
-                        <span>
-                            SEND US A MESSAGE
-                        </span>
-
+                        <div class="heading-ornament">
+                            <h2 class="section-title title-green">Send Us a Message</h2>
+                            <img src="{{ asset('images/divider.png') }}" alt="" class="heading-divider">
+                        </div>
                         <h3>
                             How Can We Help?
                         </h3>

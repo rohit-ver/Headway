@@ -109,7 +109,7 @@ class ProductForm
                                 '4:3',
                                 '1:1',
                             ])
-                            ->disk('public')
+                            ->disk('uploads')
                             ->directory('products')
                             ->visibility('public')
                             ->required()
@@ -143,7 +143,7 @@ class ProductForm
                                         '4:3',
                                         '1:1',
                                     ])
-                                    ->disk('public')
+                                    ->disk('uploads')
                                     ->directory('products/variants')
                                     ->visibility('public')
                                     ->required()
@@ -177,3 +177,4 @@ class ProductForm
             ]);
     }
 }
+

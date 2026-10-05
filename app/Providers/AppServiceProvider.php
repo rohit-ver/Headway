@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Blade;
+use App\Models\WebsiteSetting;
+use Illuminate\Support\Facades\View;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -31,5 +33,7 @@ class AppServiceProvider extends ServiceProvider
         Blade::if('customerAuth', function () {
             return Auth::guard('customer')->check();
         });
+
+        View::share('websiteSettings', WebsiteSetting::first());
     }
 }

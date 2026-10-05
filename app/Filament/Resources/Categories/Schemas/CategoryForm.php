@@ -61,7 +61,7 @@ class CategoryForm
                             ->label('Category Image')
                             ->image()
                             ->imageEditor()
-                            ->disk('public')
+                            ->disk('uploads')
                             ->directory('categories')
                             ->visibility('public')
                             ->maxSize(2048),

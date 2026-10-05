@@ -25,7 +25,7 @@ class ProductsTable
 
                 ImageColumn::make('main_image')
                     ->label('Image')
-                    ->disk('public')
+                    ->disk('uploads')
                     ->square()
                     ->size(50),
 

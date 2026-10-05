@@ -26,7 +26,7 @@ body {
     font-family: "DM Sans", sans-serif;
     color: var(--text-dark);
     background: #fff;
-    overflow-x: hidden;
+    overflow-x: clip;
 }
 
 a {
@@ -691,7 +691,7 @@ img {
 }
 
 .section-title {
-    font-family: "Playfair Display", serif;
+    font-family: "Times New Roman Bold Italic", serif;
 
     font-size: clamp(34px, 4vw, 52px);
     line-height: 1.15;
@@ -704,9 +704,9 @@ img {
 }
 
 .section-text {
-    color: var(--text-muted);
+    /* color: var(--text-muted); */
 
-    font-size: 17px;
+    font-size: 21px;
     line-height: 1.8;
 
     max-width: 600px;
@@ -1074,15 +1074,9 @@ img {
 .about-hero {
     position: relative;
 
-    padding: 90px 0 100px;
+    padding: 150px 0 100px;
 
-    background:
-        linear-gradient(
-            135deg,
-            #fff9ed 0%,
-            #ffffff 55%,
-            #fff5e4 100%
-        );
+    background: "#F4E5D6" ;
 
     overflow: hidden;
 }
@@ -1178,88 +1172,14 @@ img {
 .about-hero-text {
     max-width: 620px;
 
-    color: var(--text-muted);
+    /* color: var(--text-muted); */
 
-    font-size: 18px;
+    font-size: 22px;
 
     line-height: 1.8;
 
     margin-bottom: 30px;
 }
-
-
-/* Hero Buttons */
-
-.about-hero-buttons {
-    display: flex;
-
-    align-items: center;
-
-    gap: 14px;
-
-    flex-wrap: wrap;
-}
-
-
-.about-primary-btn,
-.about-outline-btn {
-    display: inline-flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    gap: 10px;
-
-    padding: 15px 24px;
-
-    border-radius: 10px;
-
-    font-size: 16px;
-
-    font-weight: 700;
-
-    transition: all 0.3s ease;
-}
-
-
-.about-primary-btn {
-    background: #b51717 !important;
-
-    color: #f0eded !important;
-}
-
-.about-primary-btn:hover {
-    background: #6b2205 !important;
-
-    color: #f1f0f0 !important;
-
-    transform: translateY(-3px);
-
-    box-shadow:
-        0 12px 25px rgba(237, 28, 36, 0.20);
-}
-
-
-.about-outline-btn {
-    border: 1.5px solid var(--primary);
-
-    color: white;
-
-    background: #b51717;
-}
-
-.about-outline-btn:hover {
-    background: #6b2205;
-
-    color: #f8f7f7 !important;
-
-    transform: translateY(-3px);
-
-    box-shadow:
-        0 12px 25px rgba(237, 28, 36, 0.20);
-}
-
 
 /* Hero Image */
 
@@ -1309,6 +1229,43 @@ img {
         0 25px 60px rgba(0, 0, 0, 0.12);
 }
 
+.story-image-vision img {
+    position: relative;
+
+    z-index: 1;
+
+    width: 100%;
+
+    height: 390px;
+
+    object-fit: cover;
+
+    border-radius: 25px;
+
+    display: block;
+
+    box-shadow:
+        0 25px 60px rgba(0, 0, 0, 0.12);
+}
+
+.about-hero-image-private-labelling img {
+    position: relative;
+
+    z-index: 1;
+
+    width: 100%;
+
+    height: 390px;
+
+    object-fit: cover;
+
+    border-radius: 25px;
+
+    display: block;
+
+    box-shadow:
+        0 25px 60px rgba(0, 0, 0, 0.12);
+}
 
 /* Image Badge */
 
@@ -1357,7 +1314,7 @@ img {
 ========================================================= */
 
 .about-story {
-    padding: 55px 0;
+    padding: 160px 0;
 
      background:
         linear-gradient(
@@ -1396,18 +1353,21 @@ img {
 
 .story-image img {
     position: relative;
-
+    
     z-index: 1;
 
     width: 100%;
 
-    height: 450px;
+    height: 640px;
 
     object-fit: cover;
 
-    border-radius: 22px;
+    border-radius: 25px;
 
     display: block;
+
+    box-shadow:
+        0 25px 60px rgba(0, 0, 0, 0.12);
 }
 
 
@@ -1433,11 +1393,11 @@ img {
 
     line-height: 1.1;
 
-    font-weight: 800;
+    font-weight: 700;
 
     letter-spacing: -1.5px;
 
-    margin-bottom: 25px;
+    margin-bottom: 15px;
 }
 
 .section-title span {
@@ -1448,9 +1408,9 @@ img {
 
 
 .section-text {
-    color: var(--text-muted);
+    /* color: var(--text-muted); */
 
-    font-size: 16px;
+    font-size: 21px;
 
     line-height: 1.8;
 
@@ -1499,7 +1459,7 @@ img {
 
     color: var(--text-dark);
 
-    font-size: 16px;
+    font-size: 21px;
 
     font-weight: 700;
 }
@@ -1509,7 +1469,7 @@ img {
 
     color: var(--text-muted);
 
-    font-size: 14px;
+    font-size: 18px;
 
     line-height: 1.6;
 }
@@ -1849,7 +1809,7 @@ img {
     }
 
     .about-hero-text {
-        font-size: 15px;
+        font-size: 22px;
 
         line-height: 1.7;
     }
@@ -5263,24 +5223,13 @@ img {
     margin-bottom: 28px;
 }
 
-
-.form-card-heading span {
-    color: #A01414;
-
-    font-size: 10px;
-    font-weight: 800;
-
-    letter-spacing: 2px;
-}
-
-
 .form-card-heading h3 {
     color: #242222;
 
     font-family: "Playfair Display", serif;
 
     font-size: 30px;
-
+    text-align: center;
     margin: 6px 0 6px;
 }
 
@@ -5291,6 +5240,8 @@ img {
     font-size: 13px;
 
     margin: 0;
+    text-align: center;
+
 }
 
 
@@ -5689,7 +5640,7 @@ img {
 
 .inquiry-page {
     min-height: 100vh;
-    padding: 80px 0 100px;
+    padding: 120px 0 100px;
     background: #FAF7F0;
     color: #242222;
     font-family: 'Poppins', sans-serif;
@@ -6683,7 +6634,7 @@ textarea.form-control {
 
 /* =========================================================
    5. TOAST ICON
-   ✓ for success
+   âœ“ for success
    ! for error
    ========================================================= */
 
@@ -6888,4 +6839,801 @@ textarea.form-control {
     font-size: 18px;
     color: #999;
     cursor: pointer;
+}
+
+/* Footer Social Links */
+/* Footer Social Media */
+.footer-social {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-top: 18px;
+}
+
+.footer-social a {
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 19px;
+
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 50%;
+
+    text-decoration: none;
+
+    transition: all 0.3s ease;
+}
+
+.footer-social a:hover {
+    transform: translateY(-3px);
+    background: #ffffff;
+}
+
+.footer-social i {
+    line-height: 1;
+}
+/* ---------- Page background ---------- */
+html, body {
+    background: #F4E5D6 !important;
+}
+
+.about-hero,
+.about-story,
+.about-values,
+.about-stats,
+main,
+.page-content {
+    background: #F4E5D6 !important;
+}
+
+/* ---------- Product pages background ---------- */
+.products-section,
+.product-details-section,
+.product-extra-section,
+.related-products-section {
+    background: #F4E5D6 !important;
+}
+
+/* ---------- Products page background ---------- */
+.products-section,
+.product-list-section,
+.product-list-section.alternate-section,
+.alternate-section,
+.products-cta {
+    background: #F4E5D6 !important;
+}
+
+/* ---------- Header background ---------- */
+.main-header,
+.main-header .navbar,
+.main-header .navbar-collapse {
+    background: #F4E5D6 !important;
+}
+
+/* ---------- Heading + red divider ---------- */
+:root {
+    --brand-green: #2e7d1f;
+}
+
+.title-green,
+.title-green span {
+    color: var(--brand-green) !important;
+}
+
+.heading-ornament {
+    width: fit-content;
+    min-width: 260px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.heading-ornament .section-title,
+.heading-ornament .about-hero-title {
+    margin-bottom: 0;
+    font-weight: 700;
+}
+
+.heading-divider {
+    display: block;
+    width: 100%;
+    max-width: 320px;
+    height: auto;
+    margin: 4px auto 0;
+}
+
+/* ---------- Heading aur divider ke beech gap kam ---------- */
+.heading-ornament .section-title,
+.heading-ornament .about-hero-title {
+    line-height: 1.05 !important;
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+.heading-divider {
+    margin-top: -14px !important;
+    margin-bottom: -14px !important;
+}
+
+/* ---------- Gap aur kam (upar + neeche) ---------- */
+.heading-ornament {
+    margin-bottom: 4px !important;
+}
+
+.heading-divider {
+    margin-top: -22px !important;
+    margin-bottom: -26px !important;
+}
+
+/* ---------- Text justify ---------- */
+.section-text,
+.about-hero-text {
+    text-align: justify;
+    text-justify: inter-word;
+    hyphens: auto;
+}
+
+/* ---------- Text ko right tak failao ---------- */
+.about-story .section-text,
+.about-hero .about-hero-text {
+    max-width: none !important;
+    width: 100%;
+}
+
+.about-story .col-lg-7 {
+    padding-right: 0;
+}
+
+/* ---------- Founder's note styles ---------- */
+.hand {
+    font-family: 'Caveat', cursive;
+    font-size: 1.3em;
+    font-weight: 600;
+    line-height: 1;
+}
+
+.founder-quote {
+    font-family: 'Mrs Saint Delafield', cursive !important;
+    font-size: 2.2rem;
+    text-align: center !important;
+    margin: 30px 0 5px;
+    font-weight: 400 !important;
+}
+
+.founder-names {
+    font-family: 'Kaushan Script', cursive !important;
+    font-size: 1.5rem;
+    text-align: center !important;
+    font-weight: 400 !important;
+}
+
+/* ---------- Tagline aur naam ka size barabar, dono center me ---------- */
+.founder-quote,
+.founder-names {
+    font-size: 1.6rem !important;
+    line-height: 1.3 !important;
+    text-align: center !important;
+}
+
+.founder-quote {
+    margin: 24px 0 4px !important;
+}
+
+
+/* ---------- Headings aur divider center me ---------- */
+.heading-ornament {
+    width: 100% !important;
+    min-width: 0 !important;
+    text-align: center !important;
+}
+
+.heading-ornament .section-title,
+.heading-ornament .about-hero-title {
+    text-align: center !important;
+}
+
+.heading-divider {
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+/* ---------- Map section ---------- */
+.map-section {
+    padding: 70px 0;
+    background: #F4E5D6;
+}
+
+.map-text {
+    max-width: 800px;
+    margin: 0 auto 30px !important;
+    text-align: center !important;
+}
+
+.map-image-wrap {
+    width: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+    background: transparent;
+}
+
+.map-image {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+@media (max-width: 768px) {
+    .map-section {
+        padding: 40px 0;
+    }
+
+    .map-image-wrap {
+        border-radius: 12px;
+    }
+}
+
+/* Footer headings */
+.main-footer h5 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    color: #fff;
+    text-decoration: none;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+.main-footer h5::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 40px;
+    height: 2px;
+    background-color: #f5a623;
+}
+.main-footer a { color: #fff; text-decoration: none; }
+.main-footer a:hover { color: #f5a623; }
+
+/* Sidebar sticky fix */
+html, body {
+    overflow-x: clip;
+}
+.shop-sidebar {
+    top: 20px;
+    max-height: calc(100vh - 40px);
+}
+
+/* =========================================
+   COMPACT PRODUCT CARDS (4 in a row)
+========================================= */
+
+.product-list-section .product-card {
+    border-radius: 14px;
+}
+
+/* fixed size image container */
+.product-list-section .product-image {
+    width: 100%;
+    height: 220px;
+    padding: 12px;
+    background: #F1E9DB;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.product-list-section .product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain !important;
+    object-position: center;
+}
+
+.product-list-section .product-badge {
+    top: 10px;
+    left: 10px;
+    padding: 5px 10px;
+    font-size: 10px;
+}
+
+.product-list-section .product-content {
+    padding: 14px 16px 16px;
+}
+
+.product-list-section .product-category {
+    font-size: 10px;
+    letter-spacing: 1px;
+}
+
+.product-list-section .product-content h3 {
+    font-size: 18px;
+    margin: 5px 0 6px;
+    line-height: 1.3;
+}
+
+/* description sirf 2 line, taaki saare cards barabar rahein */
+.product-list-section .product-content p {
+    font-size: 13px;
+    line-height: 1.5;
+    margin-bottom: 12px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.product-list-section .product-btn {
+    font-size: 13px;
+}
+
+@media (max-width: 767px) {
+    .product-list-section .product-image { height: 180px; }
+}
+
+/* =========================================
+   PRODUCT CARD: white card, sirf shadow
+========================================= */
+
+.product-list-section .product-card,
+.product-list-section:not(.alternate-section) .product-card {
+    background: #fff;
+    border: 0;
+    border-radius: 14px;
+    box-shadow: 0 4px 16px rgba(36, 34, 34, 0.12);
+}
+
+.product-list-section .product-card:hover {
+    border: 0;
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(36, 34, 34, 0.20);
+}
+
+/* image container ab card jaisa white, padding nahi */
+.product-list-section .product-image {
+    background: #fff;
+    padding: 0;
+    height: 230px;
+}
+
+.product-list-section .product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain !important;
+    object-position: center;
+}
+
+/* text wala hissa bhi white */
+.product-list-section .product-content {
+    background: #fff;
+    padding: 6px 18px 18px;
+}
+
+/* =========================================
+   SECTIONS KE BEECH GAP KAM
+========================================= */
+
+.shop-main .product-list-section {
+    padding: 20px 0 10px;
+}
+
+.shop-main .product-section-heading {
+    margin-bottom: 14px;
+}
+
+.shop-main .product-section-heading .section-tag {
+    margin-bottom: 0;
+}
+
+/* sabse upar wale category cards aur pehle section ke beech */
+.shop-main .products-section {
+    padding-bottom: 20px;
+}
+
+/* =========================================
+   PRODUCTS PAGE HEADING (Founder's Note style)
+========================================= */
+
+.shop-main .products-section .section-title {
+    font-family: var(--font-heading) !important;   /* Century Schoolbook */
+    font-weight: bold;
+    font-size: clamp(36px, 4.5vw, 52px);
+    color: var(--brand-green);
+    position: relative;
+    display: inline-block;
+    padding-bottom: 28px;
+    margin-bottom: 18px;
+}
+
+.shop-main .products-section .section-title span {
+    color: var(--brand-green);
+}
+
+/* red decorative line, beech me ornament */
+.shop-main .products-section .section-title::after {
+    content: '\2766';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 70%;
+    font-size: 20px;
+    line-height: 1;
+    text-align: center;
+    color: #e53935;
+    background:
+        linear-gradient(#e53935, #e53935) left center / calc(50% - 22px) 1px no-repeat,
+        linear-gradient(#e53935, #e53935) right center / calc(50% - 22px) 1px no-repeat;
+}
+
+/* Heading ke neeche se icon hatao, sirf red line rakho */
+.shop-main .products-section .section-title::after {
+    content: '';
+    height: 2px;
+    width: 70%;
+    font-size: 0;
+    background: #e53935;
+}
+
+/* Heading ke neeche ki red line hatao */
+.shop-main .products-section .section-title::after {
+    display: none !important;
+}
+
+.shop-main .products-section .section-title {
+    padding-bottom: 0;
+}
+
+/* Processing image par green border */
+.story-image-vision {
+    border: 4px solid var(--brand-green);
+    border-radius: 24px;
+    overflow: hidden;
+    display: block;
+}
+
+.story-image-vision img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* Processing image: border aur image ke kone match karo */
+.story-image-vision {
+    border: 4px solid var(--brand-green);
+    border-radius: 24px;
+    overflow: hidden;
+    line-height: 0;
+    padding: 0;
+    background: transparent;
+    box-shadow: none;
+}
+
+.story-image-vision img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    margin: 0;
+}
+
+/* About image par green border */
+.about-hero-image {
+    border: 4px solid var(--brand-green);
+    border-radius: 24px;
+    overflow: hidden;
+    line-height: 0;
+    padding: 0;
+    background: transparent;
+    box-shadow: none;
+}
+
+.about-hero-image img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    margin: 0;
+}
+
+/* Mission image: green border + kam height */
+.story-image {
+    border: 4px solid var(--brand-green);
+    border-radius: 24px;
+    overflow: hidden;
+    line-height: 0;
+    padding: 0;
+    background: transparent;
+    box-shadow: none;
+    height: auto;
+}
+
+.story-image img {
+    display: block;
+    width: 100%;
+    height: 380px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    margin: 0;
+}
+
+@media (max-width: 767px) {
+    .story-image img { height: 260px; }
+}
+
+/* Teeno images ki height barabar (380px) */
+.story-image-vision img,
+.about-hero-image img,
+.story-image img {
+    height: 380px;
+    object-fit: cover;
+    object-position: center;
+}
+
+@media (max-width: 767px) {
+    .story-image-vision img,
+    .about-hero-image img,
+    .story-image img {
+        height: 260px;
+    }
+}
+
+/* Mission image height wapas 640px */
+.story-image img {
+    height: 640px;
+}
+
+@media (max-width: 767px) {
+    .story-image img { height: 320px; }
+}
+
+
+/* =========================================
+   ABOUT PAGE ANIMATIONS (sirf CSS)
+========================================= */
+
+@keyframes aboutFromLeft {
+    from { opacity: 0; transform: translateX(-60px); }
+    to   { opacity: 1; transform: none; }
+}
+@keyframes aboutFromRight {
+    from { opacity: 0; transform: translateX(60px); }
+    to   { opacity: 1; transform: none; }
+}
+@keyframes aboutRise {
+    from { opacity: 0; transform: translateY(28px); }
+    to   { opacity: 1; transform: none; }
+}
+@keyframes aboutDivider {
+    from { opacity: 0; transform: scaleX(0); }
+    to   { opacity: 1; transform: scaleX(1); }
+}
+
+/* Scroll-driven animation (Chrome, Edge, Brave). Purane browser me animation nahi, content normal dikhega */
+@supports (animation-timeline: view()) {
+
+    /* Image: pehle section me left se, private label me right se */
+    .about-story .row > .col-lg-6:first-child {
+        animation: aboutFromLeft linear both;
+        animation-timeline: view();
+        animation-range: entry 0% entry 55%;
+    }
+    .about-story .row.flex-lg-row-reverse > .col-lg-6:first-child {
+        animation-name: aboutFromRight;
+    }
+
+    /* Text column: neeche se upar */
+    .about-story .row > .col-lg-6:last-child {
+        animation: aboutRise linear both;
+        animation-timeline: view();
+        animation-range: entry 0% entry 50%;
+    }
+
+    /* Heading ke neeche ki red divider beech se khulti hai */
+    .about-story .heading-divider {
+        transform-origin: center;
+        animation: aboutDivider linear both;
+        animation-timeline: view();
+        animation-range: entry 10% entry 70%;
+    }
+
+    /* Values section */
+    .values-heading {
+        animation: aboutRise linear both;
+        animation-timeline: view();
+        animation-range: entry 0% entry 60%;
+    }
+    .about-values .row > div:nth-child(1) .value-card,
+    .about-values .row > div:nth-child(2) .value-card,
+    .about-values .row > div:nth-child(3) .value-card {
+        animation: aboutRise linear both;
+        animation-timeline: view();
+        animation-range: entry 0% entry 60%;
+    }
+    .about-values .row > div:nth-child(2) .value-card {
+        animation-range: entry 8% entry 68%;
+    }
+    .about-values .row > div:nth-child(3) .value-card {
+        animation-range: entry 16% entry 76%;
+    }
+
+    /* Stats */
+    .about-stats .stat-item {
+        animation: aboutRise linear both;
+        animation-timeline: view();
+        animation-range: entry 0% entry 80%;
+    }
+}
+
+/* Hover (cards par) */
+.about-values .value-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.about-values .value-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 14px 32px rgba(36, 34, 34, 0.14);
+}
+.about-values .value-icon {
+    transition: transform 0.3s ease;
+}
+.about-values .value-card:hover .value-icon {
+    transform: scale(1.1);
+}
+
+/* Jinko animation pasand nahi (accessibility setting), unke liye band */
+@media (prefers-reduced-motion: reduce) {
+    .about-story .row > .col-lg-6,
+    .about-story .heading-divider,
+    .values-heading,
+    .about-values .value-card,
+    .about-stats .stat-item {
+        animation: none !important;
+    }
+}
+
+/* =========================================
+   FOUNDER'S NOTE ANIMATION (sirf CSS)
+========================================= */
+
+@keyframes founderFadeUp {
+    from { opacity: 0; transform: translateY(26px); }
+    to   { opacity: 1; transform: none; }
+}
+@keyframes founderLine {
+    from { opacity: 0; transform: scaleX(0); }
+    to   { opacity: 1; transform: scaleX(1); }
+}
+@keyframes founderQuote {
+    from { opacity: 0; transform: translateY(18px) scale(0.96); }
+    to   { opacity: 1; transform: none; }
+}
+@keyframes founderMark {
+    from { background-size: 0% 2px; }
+    to   { background-size: 100% 2px; }
+}
+
+/* Text column ka purana scroll animation band, andar ke items alag-alag animate honge */
+.about-story:has(.founder-names) .row > .col-lg-6:last-child {
+    animation: none;
+    animation-timeline: auto;
+    opacity: 1;
+    transform: none;
+}
+
+.about-story:has(.founder-names) .heading-ornament,
+.about-story:has(.founder-names) .section-text,
+.about-story:has(.founder-names) .founder-quote,
+.about-story:has(.founder-names) .founder-names {
+    animation-timeline: auto;
+    animation-range: normal;
+    animation-fill-mode: both;
+    animation-timing-function: ease-out;
+    animation-duration: 0.8s;
+}
+
+.about-story:has(.founder-names) .heading-ornament {
+    animation-name: founderFadeUp;
+    animation-delay: 0.1s;
+}
+.about-story:has(.founder-names) .heading-divider {
+    transform-origin: center;
+    animation: founderLine 0.9s ease-out 0.5s both;
+    animation-timeline: auto;
+    animation-range: normal;
+}
+.about-story:has(.founder-names) .section-text:nth-of-type(1) {
+    animation-name: founderFadeUp;
+    animation-delay: 0.45s;
+}
+.about-story:has(.founder-names) .section-text:nth-of-type(2) {
+    animation-name: founderFadeUp;
+    animation-delay: 0.75s;
+}
+.about-story:has(.founder-names) .founder-quote {
+    animation-name: founderQuote;
+    animation-delay: 1.1s;
+}
+.about-story:has(.founder-names) .founder-names {
+    animation-name: founderFadeUp;
+    animation-delay: 1.4s;
+}
+
+/* Paragraph ke hand-font wale highlighted words ke neeche golden line khulti hai */
+.about-story:has(.founder-names) .section-text .hand {
+    background: linear-gradient(#B28B20, #B28B20) left bottom / 0% 2px no-repeat;
+    animation: founderMark 0.9s ease-out 1.6s forwards;
+    padding-bottom: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .about-story:has(.founder-names) .heading-ornament,
+    .about-story:has(.founder-names) .heading-divider,
+    .about-story:has(.founder-names) .section-text,
+    .about-story:has(.founder-names) .founder-quote,
+    .about-story:has(.founder-names) .founder-names {
+        animation: none !important;
+    }
+    .about-story:has(.founder-names) .section-text .hand {
+        animation: none;
+        background-size: 100% 2px;
+    }
+}
+
+/* Hand-font words ke neeche ki golden underline hatao */
+.about-story:has(.founder-names) .section-text .hand {
+    background: none !important;
+    animation: none !important;
+    padding-bottom: 0;
+}
+
+/* Navbar links: heading wala font (Century Schoolbook) */
+.main-header .navbar-nav .nav-link {
+    font-family: var(--font-heading) !important;
+    font-weight: bold;
+}
+
+/* Sidebar: Filters jaisa font aur color (bina image ke) */
+.shop-sidebar .sidebar-label,
+.shop-sidebar .sidebar-cat-toggle {
+    font-family: var(--font-heading) !important;
+    font-weight: bold;
+    color: var(--brand-green) !important;
+}
+
+.shop-sidebar .sidebar-cat-toggle:hover {
+    color: #1b5e20 !important;
+}
+
+/* Sidebar product names: same font aur color */
+.shop-sidebar .sidebar-products li a {
+    font-family: var(--font-heading) !important;
+    font-weight: bold;
+    color: var(--brand-green) !important;
+}
+
+.shop-sidebar .sidebar-products li a:hover {
+    color: #1b5e20 !important;
+}
+
+
+/* About page: mobile par navbar ke neeche top gap */
+@media (max-width: 767px) {
+    .about-story:has(.founder-names) {
+        padding-top: 40px !important;
+    }
+}
+
+/* About page: mobile par header ke neeche se content shuru ho */
+@media (max-width: 767px) {
+    .about-story:has(.founder-names) {
+        padding-top: 165px !important;
+    }
 }

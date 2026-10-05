@@ -2,14 +2,16 @@
 
 namespace App\Filament\Pages\Auth;
 
-use Filament\Forms\Components\TextInput;
 use Filament\Auth\Pages\Login as BaseLogin;
-use Illuminate\Support\HtmlString;
+use Filament\Forms\Components\Checkbox;
+use Filament\Forms\Components\TextInput;
+use Filament\Schemas\Components\Component;
 use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\HtmlString;
 
 class Login extends BaseLogin
 {
-    protected function getPasswordFormComponent(): TextInput
+    protected function getPasswordFormComponent(): Component
     {
         return TextInput::make('password')
             ->label('Password')
@@ -18,17 +20,23 @@ class Login extends BaseLogin
             ->autocomplete('current-password')
             ->required()
             ->extraInputAttributes(['tabindex' => 2])
-            // Hint hata diya (jo upar aata tha)
             ->hint(null)
-            // Neeche helper text me link daal diya
             ->helperText(
                 filament()->hasPasswordReset()
                     ? new HtmlString(Blade::render(
-                        '<div class="text-end"><a href="' . 
-                        route('filament.' . filament()->getCurrentPanel()->getId() . '.auth.password-reset.request') . 
+                        '<div class="text-end"><a href="' .
+                        route('filament.' . filament()->getCurrentPanel()->getId() . '.auth.password-reset.request') .
                         '" class="text-sm">Forgot password?</a></div>'
                     ))
                     : null
             );
+    }
+
+    // "Remember me" chhupa diya, hamesha false rahega
+    protected function getRememberFormComponent(): Component
+    {
+        return Checkbox::make('remember')
+            ->default(false)
+            ->hidden();
     }
 }

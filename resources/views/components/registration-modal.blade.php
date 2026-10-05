@@ -297,6 +297,7 @@
                                             Resend OTP
 
                                         </button>
+                                        <span id="otpTimer" style="color: #888;">Resend OTP in <span id="timerCount">60</span>s</span>
 
                                     </div>
 

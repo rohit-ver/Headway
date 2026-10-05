@@ -21,7 +21,7 @@ class ProductInfolist
 
                         ImageEntry::make('main_image')
                             ->label('Main Image')
-                            ->disk('public'),
+                            ->disk('uploads'),
 
                         Grid::make(2)
                             ->schema([
@@ -72,7 +72,7 @@ class ProductInfolist
 
                                 ImageEntry::make('image_path')
                                     ->label('Image')
-                                    ->disk('public'),
+                                    ->disk('uploads'),
 
                                 TextEntry::make('color')
                                     ->label('Color'),

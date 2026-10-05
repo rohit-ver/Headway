@@ -1,8 +1,10 @@
 @import "/vendor/filament/filament/resources/css/theme.css";
+@source '../../../views';
+
 
 /* =========================================================
    HEADWAY FILAMENT ADMIN THEME
-   Premium • Clean • Professional • Responsive
+   Premium â€¢ Clean â€¢ Professional â€¢ Responsive
 ========================================================= */
 
 :root {
@@ -1223,7 +1225,7 @@ body {
         grid-row: auto !important;
     }
 
-    /* FIX: was repeat(3, 1fr) — 3 columns at this width made each
+    /* FIX: was repeat(3, 1fr) â€” 3 columns at this width made each
        card too narrow, which caused the text to visually "break".
        2 columns gives each card enough room. */
     .fi-panel-admin .quick-actions-grid {

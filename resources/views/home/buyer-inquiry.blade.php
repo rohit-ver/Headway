@@ -14,13 +14,15 @@
 
         <div class="inquiry-hero">
 
-            <span class="inquiry-eyebrow">
-                HeadwayStrata
-            </span>
+            {{-- <div class="heading-ornament">
+                <h2 class="section-title title-green">Headway</h2>
+                <img src="{{ asset('images/divider.png') }}" alt="" class="heading-divider">
+            </div> --}}
 
-            <h1>
-                Request a Quote
-            </h1>
+           <div class="heading-ornament">
+                <h2 class="section-title title-green">Request a Quote</h2>
+                <img src="{{ asset('images/divider.png') }}" alt="" class="heading-divider">
+            </div>
 
             <p>
                 Tell us what you're looking for and our team will

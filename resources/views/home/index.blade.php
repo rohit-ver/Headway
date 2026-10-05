@@ -311,8 +311,120 @@
     {{-- =====================================================
          PRODUCTS SECTION--}}
 
-  @include('home.products-content')
+  {{-- @include('home.products-content') --}}
+    
+    {{-- =====================================================
+         OUR STORY / VISION (STATIC)
+    ====================================================== --}}
 
+    <section class="about-story">
+        <div class="container">
+            <div class="row align-items-start g-5">
+
+                <!-- Image -->
+                <div class="col-lg-6">
+                    <div class="story-image-vision">
+                        <img src="{{ asset('images/processing.png') }}"
+                             alt="Makhana Processing">
+                    </div>
+                </div>
+
+                <!-- Content -->
+                <div class="col-lg-6">
+
+                    {{-- <span class="section-tag">OUR VISION</span> --}}
+
+                    <div class="heading-ornament">
+                        <h2 class="section-title title-green">Vision</h2>
+                        <img src="{{ asset('images/divider.png') }}" alt="" class="heading-divider">
+                    </div>
+
+                    <p class="section-text">
+                        At<strong> Headway - Globally Local</strong>, we believe that food is medium of transformation, not just for consumption 
+                        but also for cultural expression and social interaction. We believe in the power of authenticity
+                        <strong> “progressing with roots”</strong>.
+                        <br>
+                        Celebrating<strong> “the journey of flavors” </strong>across borders along with honoring 
+                        local traditions & embracing global curiosity.
+                    </p>
+
+            </div>
+        </div>
+    </section>
+
+    
+    <section class="about-hero">
+        <div class="container">
+            <div class="row align-items-start g-5">
+
+                <!-- Left Content -->
+                <div class="col-lg-6">
+
+                    {{-- <span class="about-tag">MISSION</span> --}}
+
+                   <div class="heading-ornament">
+                        <h1 class="section-title title-green">Mission</h1>
+                        <img src="{{ asset('images/divider.png') }}" alt="" class="heading-divider">
+                    </div>
+
+                    <p class="about-hero-text">
+                        Our mission is to season the world soulfully. 
+                        We are dedicated to craft ethically sourced flavors 
+                        that honor traditions & elevate daily rituals. 
+                        Our culinary exploration into the global pantry is 
+                        embedded to blend rich & diverse flavors in the modern way of cooking.
+                        We aim to create global network of food enthusiasts as a testament to the 
+                        interconnectedness of cultures & importance of culinary diversity in today’s world.
+                    </p>
+
+                    {{-- <div class="about-hero-buttons">
+                        <a href="{{ url('/products') }}" class="about-primary-btn">
+                            Explore Products
+                            <i class="bi bi-arrow-right"></i>
+                        </a>
+
+                        <a href="{{ url('/contact') }}" class="about-outline-btn">
+                            Send Inquiry
+                        </a>
+                    </div> --}}
+
+                </div>
+
+                <!-- Right Image -->
+                <div class="col-lg-6">
+                    <div class="about-hero-image">
+
+                        <img src="{{ asset('images/about.png') }}"
+                             alt="Premium Makhana">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================================================
+     MAP SECTION
+========================================================= -->
+
+<section class="map-section">
+    <div class="container">
+
+        <div class="heading-ornament">
+            <h2 class="section-title title-green">Travel the world</h2>
+            <img src="{{ asset('images/divider.png') }}" alt="" class="heading-divider">
+        </div>
+
+        
+
+        <div class="map-image-wrap">
+            <img src="{{ asset('images/Map.png') }}"
+                 alt="Map"  
+                 class="map-image">
+        </div>
+
+    </div>
+</section>
 
 
 @endsection
