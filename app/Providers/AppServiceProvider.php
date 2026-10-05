@@ -2,13 +2,13 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Facades\URL;
-use Illuminate\Support\Facades\Schema;
+use App\Models\WebsiteSetting;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Blade;
-use App\Models\WebsiteSetting;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -25,15 +25,31 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        if (env('APP_ENV') === 'production') {
+        if (app()->environment('production')) {
             URL::forceScheme('https');
         }
+
         Schema::defaultStringLength(191);
 
         Blade::if('customerAuth', function () {
             return Auth::guard('customer')->check();
         });
 
-        View::share('websiteSettings', WebsiteSetting::first());
+        // Lazy load: query sirf view render hone pe chalegi, build ke time nahi
+        View::composer('*', function ($view) {
+            static $settings = false;
+
+            if ($settings === false) {
+                try {
+                    $settings = Schema::hasTable('website_settings')
+                        ? WebsiteSetting::first()
+                        : null;
+                } catch (\Throwable $e) {
+                    $settings = null;
+                }
+            }
+
+            $view->with('websiteSettings', $settings);
+        });
     }
 }
