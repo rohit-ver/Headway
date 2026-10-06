@@ -4946,7 +4946,7 @@ img {
 
 .contact-info-section {
     padding: 90px 0;
-    background: #FAF7F0;
+    background: #F4E5D6;
 }
 
 
@@ -5095,7 +5095,7 @@ img {
 .contact-form-section {
     padding: 95px 0;
 
-    background: #fff;
+    background: #F4E5D6;
 }
 
 
@@ -5428,7 +5428,7 @@ img {
 .contact-cta {
     padding: 35px 0 90px;
 
-    background: #fff;
+    background: #F4E5D6;
 }
 
 
@@ -7636,4 +7636,66 @@ html, body {
     .about-story:has(.founder-names) {
         padding-top: 165px !important;
     }
+}
+
+/* ---------- Contact page: paragraph text image jaisa ---------- */
+.contact-hero p,
+.contact-info-section .section-description,
+.contact-info-card p,
+.contact-form-content > p,
+.contact-feature p,
+.form-card-heading p {
+    font-family: var(--font-text) !important;
+    font-size: 1.1rem !important;
+    line-height: 2.1 !important;
+    font-weight: 500;
+    hyphens: none !important;
+}
+
+/* ---------- Contact features (Bulk Orders, Export, Packaging) ---------- */
+.contact-form-content .contact-feature p {
+    font-family: var(--font-text) !important;
+    font-size: 1.1rem !important;
+    line-height: 2 !important;
+    font-weight: 500 !important;
+    hyphens: none !important;
+    margin-bottom: 0 !important;
+}
+
+.contact-form-content .contact-feature h4 {
+    font-family: var(--font-heading) !important;
+    font-size: 1.4rem !important;
+    line-height: 1.3 !important;
+    color: var(--brand-green, #2e7d1f) !important;
+    margin-bottom: 6px !important;
+}
+
+.contact-form-content .contact-feature {
+    margin-bottom: 24px;
+}
+
+/* ---------- Inquiry Cart page: text style ---------- */
+.hw-cart-heading p,
+.hw-cart-product-info p,
+.hw-summary-note p,
+.hw-cart-empty p {
+    font-family: var(--font-text) !important;
+    font-size: 1.05rem !important;
+    line-height: 1.9 !important;
+    font-weight: 500 !important;
+    hyphens: none !important;
+}
+
+.hw-cart-meta span,
+.hw-summary-line span,
+.hw-summary-total span,
+.hw-secure-note,
+.hw-price-request,
+.hw-cart-category {
+    font-family: var(--font-text) !important;
+}
+
+.hw-cart-product-info h3,
+.hw-cart-empty h3 {
+    font-family: var(--font-heading) !important;
 }
