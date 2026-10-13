@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable
+class User extends Authenticatable implements FilamentUser
 {
     /** @use HasFactory<UserFactory> */
     use HasFactory, Notifiable;
@@ -51,6 +51,6 @@ class User extends Authenticatable
 
      public function canAccessPanel(Panel $panel): bool
     {
-        return true; // ya production ke liye better: koi specific condition (jaise email check)
+        return $this->email === 'rohitv3319@example.com';
     }
 }
